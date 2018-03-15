@@ -8,7 +8,8 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-}
+// Ocultar elements segons la mida de la pantalla.
+@import "hidden";
+
+// Footer
+@import 'footer';
