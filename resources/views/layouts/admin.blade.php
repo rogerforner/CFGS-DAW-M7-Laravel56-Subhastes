@@ -18,7 +18,7 @@
   </head>
   <body>
     {{-- Navbar --}}
-    @include('layouts.partials.navigation.navbar')
+    @include('layouts.partials.navbar')
 
     <!-- Contingut -->
     @yield('content')

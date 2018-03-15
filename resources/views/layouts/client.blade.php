@@ -17,11 +17,14 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
   </head>
   <body>
-    {{-- Navbar --}}
-    @include('layouts.partials.navigation.navbar')
+    <!-- Navbar -->
+    @include('layouts.partials.navbar')
 
     <!-- Contingut -->
     @yield('content')
+
+    <!-- Footer -->
+    @include('layouts.partials.footer')
 
     <!-- JavaScript -->
     <script src="{{ asset('js/app.js') }}"></script>
