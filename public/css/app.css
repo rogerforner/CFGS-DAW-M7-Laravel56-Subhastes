@@ -10060,7 +10060,7 @@ main#client {
 }
 
 main#admin {
-  min-height: calc(100vh - 99px);
+  min-height: calc(100vh - 139px);
 }
 
 nav.navbar .icon-bar {
@@ -10117,24 +10117,8 @@ nav.navbar .navbar-toggler:active {
           box-shadow: none;
 }
 
-main#admin #sidebar {
-  min-height: calc(100vh - 99px);
-}
-
-main#admin #sidebar hr {
+nav.navbar.admin {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-main#admin #sidebar nav .nav-link {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-main#admin #sidebar nav .nav-link:hover {
-  color: #fff;
-}
-
-main#admin #sidebar nav div.collapse li {
-  padding-left: 25px;
 }
 
 footer {

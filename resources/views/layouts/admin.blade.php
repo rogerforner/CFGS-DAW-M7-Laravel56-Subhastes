@@ -20,25 +20,14 @@
     <!-- Navbar -->
     @include('layouts.partials.navbar')
 
+    <!-- Navbar -->
+    @include('layouts.partials.admin.navbar')
+
     <main id="admin">
       <div class="container-fluid">
         <div class="row">
-          <!-- Navegació -->
-          <!-- Sidebar (visible en >= md) -->
-          <div id="sidebar" class="col-lg-2 bg-dark text-light d-none d-lg-block">
-            <hr>
-            <h5>Usuari X</h5>
-            <hr>
-            <!-- Enllaços -->
-            <div class="row">
-              <div class="col">
-                @include('layouts.partials.admin.sidenavv')
-              </div>
-            </div>
-          </div><!-- /.col -->
-
           <!-- Contingut -->
-          <div id="content" class="col-lg-10">
+          <div id="content" class="col">
             @yield('content')
           </div><!-- /.col -->
         </div><!-- /.row -->

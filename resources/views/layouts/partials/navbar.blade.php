@@ -1,11 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-0">
   <a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name', 'Laravel') }}</a>
-  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarTogglerMvl" aria-controls="navbarTogglerMvl" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarTogglerClient" aria-controls="navbarTogglerClient" aria-expanded="false" aria-label="Toggle navigation">
     <span class="icon-bar top-bar"></span>
   	<span class="icon-bar middle-bar"></span>
   	<span class="icon-bar bottom-bar"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarTogglerMvl">
+  <div class="collapse navbar-collapse" id="navbarTogglerClient">
     {{-- Menú Esquerra --}}
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
