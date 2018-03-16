@@ -24,8 +24,16 @@
       <div class="container-fluid">
         <div class="row">
           <!-- Sidebar -->
-          <div id="sidebar" class="col-md-2 bg-dark">
-            <h1>Sidebar</h1>
+          <div id="sidebar" class="col-md-2 bg-dark text-light">
+            <hr>
+            <h5>Usuari X</h5>
+            <hr>
+            <!-- Enllaços -->
+            <div class="row">
+              <div class="col">
+                @include('layouts.partials.admin.sidenavv')
+              </div>
+            </div>
           </div><!-- /.col -->
 
           <!-- Contingut -->

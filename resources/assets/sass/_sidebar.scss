@@ -3,5 +3,9 @@
 main#admin {
   #sidebar {
     min-height: calc(100vh - #{39px + 60px});
+
+    hr {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
   }
 }

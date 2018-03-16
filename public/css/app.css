@@ -10121,6 +10121,10 @@ main#admin #sidebar {
   min-height: calc(100vh - 99px);
 }
 
+main#admin #sidebar hr {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 footer {
   bottom: 0;
   width: 100%;
