@@ -10055,6 +10055,60 @@ html {
   min-height: 100%;
 }
 
+nav.navbar .icon-bar {
+  width: 22px;
+  height: 2px;
+  background-color: #B6B6B6;
+  display: block;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  margin-top: 4px;
+}
+
+nav.navbar .navbar-toggler {
+  border: none;
+  background: transparent !important;
+}
+
+nav.navbar .navbar-toggler .top-bar {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  -webkit-transform-origin: 10% 10%;
+          transform-origin: 10% 10%;
+}
+
+nav.navbar .navbar-toggler .middle-bar {
+  opacity: 0;
+}
+
+nav.navbar .navbar-toggler .bottom-bar {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  -webkit-transform-origin: 10% 90%;
+          transform-origin: 10% 90%;
+}
+
+nav.navbar .navbar-toggler.collapsed .top-bar {
+  -webkit-transform: rotate(0);
+          transform: rotate(0);
+}
+
+nav.navbar .navbar-toggler.collapsed .middle-bar {
+  opacity: 1;
+}
+
+nav.navbar .navbar-toggler.collapsed .bottom-bar {
+  -webkit-transform: rotate(0);
+          transform: rotate(0);
+}
+
+nav.navbar .navbar-toggler:focus,
+nav.navbar .navbar-toggler:active {
+  outline: none !important;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
 footer {
   position: absolute;
   bottom: 0;

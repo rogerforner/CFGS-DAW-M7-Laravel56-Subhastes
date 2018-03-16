@@ -1,0 +1,48 @@
+nav.navbar {
+  // Button (toggler)
+  .icon-bar {
+  	width: 22px;
+  	height: 2px;
+  	background-color: #B6B6B6;
+  	display: block;
+  	transition: all 0.2s;
+  	margin-top: 4px
+  }
+
+  // Animacions
+  .navbar-toggler {
+    border: none;
+    background: transparent !important;
+
+    .top-bar {
+      transform: rotate(45deg);
+      transform-origin: 10% 10%;
+    }
+    .middle-bar {
+      opacity: 0;
+    }
+    .bottom-bar {
+      transform: rotate(-45deg);
+      transform-origin: 10% 90%;
+    }
+  }
+
+  .navbar-toggler.collapsed {
+    .top-bar {
+      transform: rotate(0);
+    }
+    .middle-bar {
+      opacity: 1;
+    }
+    .bottom-bar {
+      transform: rotate(0);
+    }
+  }
+
+  // Eliminar el color del focus quan es fa clic.
+  .navbar-toggler:focus,
+  .navbar-toggler:active {
+    outline: none !important;
+    box-shadow: none;
+  }
+}
