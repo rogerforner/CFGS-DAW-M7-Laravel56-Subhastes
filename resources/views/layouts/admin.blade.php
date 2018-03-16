@@ -20,19 +20,21 @@
     <!-- Navbar -->
     @include('layouts.partials.navbar')
 
-    <main id="admin" class="container-fluid">
-      <div class="row">
-        <!-- Sidebar -->
-        <div id="sidebar" class="col-md-2 bg-dark">
-          <h1>Sidebar</h1>
-        </div><!-- /.col -->
+    <main id="admin">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- Sidebar -->
+          <div id="sidebar" class="col-md-2 bg-dark">
+            <h1>Sidebar</h1>
+          </div><!-- /.col -->
 
-        <!-- Contingut -->
-        <div id="content" class="col-md-9">
-          @yield('content')
-        </div><!-- /.col -->
-      </div><!-- /.row -->
-    </main><!-- /.container -->
+          <!-- Contingut -->
+          <div id="content" class="col-md-9">
+            @yield('content')
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </main>
 
     <!-- Footer -->
     @include('layouts.partials.admin.footer')

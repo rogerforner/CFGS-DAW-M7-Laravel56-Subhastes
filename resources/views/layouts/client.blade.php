@@ -21,13 +21,8 @@
     @include('layouts.partials.navbar')
 
     <!-- Contingut -->
-    <main id="client" class="container-fluid">
-      <div class="row">
-        <!-- Contingut -->
-        <div class="col">
-          @yield('content')
-        </div><!-- /.col -->
-      </div><!-- /.row -->
+    <main id="client">
+      @yield('content')
     </main><!-- /.container -->
 
     <!-- Footer -->
