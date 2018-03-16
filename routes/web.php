@@ -10,7 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// Pàgina d'inici del lloc web.
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
+});
+
+// Pàgina d'inici del panell d'administració.
+Route::get('/admin', function () {
+    return view('admin.index');
 });

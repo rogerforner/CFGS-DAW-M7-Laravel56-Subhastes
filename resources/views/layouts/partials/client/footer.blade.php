@@ -1,4 +1,4 @@
-<footer class="footer bg-dark">
+<footer class="bigfoot bg-dark">
   <div class="container">
     <div class="row">
       <div class="col-lg" id="footer-navigation">

@@ -23,6 +23,9 @@
     <!-- Contingut -->
     @yield('content')
 
+    <!-- Footer -->
+    @include('layouts.partials.admin.footer')
+
     <!-- JavaScript -->
     <script src="{{ asset('js/app.js') }}"></script>
   </body>
