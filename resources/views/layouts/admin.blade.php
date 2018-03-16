@@ -17,11 +17,22 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
   </head>
   <body>
-    {{-- Navbar --}}
+    <!-- Navbar -->
     @include('layouts.partials.navbar')
 
-    <!-- Contingut -->
-    @yield('content')
+    <main id="admin" class="container-fluid">
+      <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-2 bg-dark">
+          <h1>Sidebar</h1>
+        </div><!-- /.col -->
+
+        <!-- Contingut -->
+        <div class="col-md-9">
+          @yield('content')
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </main><!-- /.container -->
 
     <!-- Footer -->
     @include('layouts.partials.admin.footer')

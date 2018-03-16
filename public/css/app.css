@@ -10050,9 +10050,17 @@ a.text-dark:focus {
   display: none !important;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+html,
+body {
+  height: 100%;
+}
+
+main#client {
+  min-height: calc(100vh - 265.42px);
+}
+
+main#admin {
+  min-height: calc(100vh - 99px);
 }
 
 nav.navbar .icon-bar {
@@ -10110,7 +10118,6 @@ nav.navbar .navbar-toggler:active {
 }
 
 footer {
-  position: absolute;
   bottom: 0;
   width: 100%;
 }
