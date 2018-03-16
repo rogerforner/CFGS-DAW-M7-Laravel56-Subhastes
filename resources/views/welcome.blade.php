@@ -4,5 +4,6 @@
 @section('content')
 
 {{-- Contingut aquí --}}
+<p style="height:2000px;">Sticky Footer</p>
 
 @endsection

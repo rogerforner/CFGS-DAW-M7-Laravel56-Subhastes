@@ -10050,9 +10050,16 @@ a.text-dark:focus {
   display: none !important;
 }
 
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 footer {
-  padding: 4rem 0;
-  margin-top: 4rem;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 2rem 0;
   font-size: 85%;
 }
 
@@ -10068,10 +10075,6 @@ footer #copyright-owner {
   text-align: right;
 }
 
-footer #footer-lang li.active {
-  display: none;
-}
-
 footer #copyright-designer {
   text-align: right;
 }
@@ -10080,37 +10083,19 @@ footer #copyright-designer hr {
   margin-top: 0;
 }
 
-footer.bg-light {
-  color: #464a4c;
-  background-color: #f7f7f9;
-}
-
-footer.bg-light a {
-  font-weight: 500;
-  color: #464a4c;
-}
-
-footer.bg-light a:hover {
-  color: rgba(70, 74, 76, 0.8);
-}
-
-footer.bg-primary,
 footer.bg-dark {
   color: #fff;
 }
 
-footer.bg-primary a,
 footer.bg-dark a {
   font-weight: 500;
   color: #fff;
 }
 
-footer.bg-primary a:hover,
 footer.bg-dark a:hover {
   color: rgba(255, 255, 255, 0.8);
 }
 
-footer.bg-primary hr,
 footer.bg-dark hr {
   border-color: rgba(255, 255, 255, 0.4);
 }
