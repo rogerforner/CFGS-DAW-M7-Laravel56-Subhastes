@@ -10117,6 +10117,10 @@ nav.navbar .navbar-toggler:active {
           box-shadow: none;
 }
 
+main#admin #sidebar {
+  min-height: calc(100vh - 99px);
+}
+
 footer {
   bottom: 0;
   width: 100%;
