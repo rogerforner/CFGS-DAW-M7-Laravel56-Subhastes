@@ -23,8 +23,8 @@
     <main id="admin">
       <div class="container-fluid">
         <div class="row">
-          <!-- Sidebar -->
-          <div id="sidebar" class="col-md-2 bg-dark text-light">
+          <!-- Sidebar (visible en >= md) -->
+          <div id="sidebar" class="col-lg-2 bg-dark text-light d-none d-lg-block">
             <hr>
             <h5>Usuari X</h5>
             <hr>
@@ -37,7 +37,7 @@
           </div><!-- /.col -->
 
           <!-- Contingut -->
-          <div id="content" class="col-md-9">
+          <div id="content" class="col-lg-9">
             @yield('content')
           </div><!-- /.col -->
         </div><!-- /.row -->

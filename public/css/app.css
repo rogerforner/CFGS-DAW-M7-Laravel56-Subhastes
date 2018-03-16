@@ -10125,10 +10125,6 @@ main#admin #sidebar hr {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-main#admin #sidebar nav {
-  font-size: 1.3rem;
-}
-
 main#admin #sidebar nav .nav-link {
   color: rgba(255, 255, 255, 0.5);
 }
