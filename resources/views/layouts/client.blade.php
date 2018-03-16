@@ -24,7 +24,7 @@
     @yield('content')
 
     <!-- Footer -->
-    @include('layouts.partials.footer')
+    @include('layouts.partials.client.footer')
 
     <!-- JavaScript -->
     <script src="{{ asset('js/app.js') }}"></script>
