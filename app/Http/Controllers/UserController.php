@@ -39,7 +39,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.users._form');
+        $user=new User;
+        return view('admin.users._form')->with(['user'=>$user]);;
     }
 
     /**

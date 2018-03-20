@@ -12,8 +12,8 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUsers" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-users"></i> Usuaris</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownUsers">
-          <a class="dropdown-item" href="#">Llistar</a>
-          <a class="dropdown-item" href="#">Crear</a>
+          <a class="dropdown-item" href="{{action('UserController@index')}}">Llistar</a>
+          <a class="dropdown-item" href="{{action('UserController@create')}}">Crear</a>
         </div>
       </li>
 
