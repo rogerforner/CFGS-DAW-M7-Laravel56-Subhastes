@@ -7,7 +7,12 @@
     <div class="col">
       <div class="card shadow-2">
         <div class="card-body">
-          <h5 class="card-title">Crear un usuari</h5>
+          @if ($user->exists)
+            <h5 class="card-title">Edit user</h5>
+          @else
+            <h5 class="card-title">Create user</h5>
+          @endif
+
 
           {{-- Errors --}}
           @if ($errors->any())
@@ -21,9 +26,9 @@
           @endif
 
           @if ($user->exists)
-            {{Form::open(['url' => '/admin/users'])}}
+            {{Form::open(['url' => "admin/users/$user->id",'method'=>'put'])}}
           @else
-            {{Form::open(['url' => "admin/users/$user->id"])}}
+            {{Form::open(['url' => '/admin/users'])}}
           @endif
             {{-- Usuari --}}
             <div class="form-group">
@@ -59,13 +64,13 @@
               <small id="roleHelp" class="form-text text-muted">El rol determinarà les accions que es podran dur a terme.</small>
             </div>
             {{-- Crear --}}
-            <button type="submit" class="btn btn-primary">Crear</button>
+            <button type="submit" class="btn btn-primary">Save</button>
           </form>
           <br>
           {{-- Tornar enrere --}}
           <p class="text-right">
             <a href="{{ action('UserController@index') }}" class="card-link">
-              <i class="far fa-arrow-alt-circle-left"></i> Tornar
+              <i class="far fa-arrow-alt-circle-left"></i> Go back
             </a>
           </p>
         </div>

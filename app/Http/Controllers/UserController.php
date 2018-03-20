@@ -67,12 +67,10 @@ class UserController extends Controller
         // Determinar el rol a assignar.
         if ($request->role === 'admin') {
             $user->assignRole('admin');
-        } elseif ($request->role === 'moderator') {
-            $user->assignRole('moderator');
-        } elseif ($request->role === 'pro') {
-            $user->assignRole('pro');
-        } elseif ($request->role === 'free') {
-            $user->assignRole('free');
+        } elseif ($request->role === 'auctionManager') {
+            $user->assignRole('auctionManager');
+        } elseif ($request->role === 'user') {
+            $user->assignRole('user');
         }
 
         // Vista on es llisten els usuaris.
@@ -111,7 +109,8 @@ class UserController extends Controller
         if ($userAction != 1 && $user->id == 1) {
             // back() crea una redirecció a la última localització de l'usuari
             // abans d'arribar aquí.
-            return back()->with('warning', 'No pots editar l\'usuari amb ID = 1.');
+            $missatge=session()->flash('warning', 'No pots esborrar l\'usuari amb ID = 1.');
+            return back()->with($missatge);
         } else {
             return view('admin.users._form', ['user' => $user]);
         }
@@ -159,12 +158,10 @@ class UserController extends Controller
         // Es substituirà el rol que es tenia.
         if ($request->role === 'admin') {
             $user->syncRoles('admin');
-        } elseif ($request->role === 'moderator') {
-            $user->syncRoles('moderator');
-        } elseif ($request->role === 'pro') {
-            $user->syncRoles('pro');
-        } elseif ($request->role === 'free') {
-            $user->syncRoles('free');
+        } elseif ($request->role === 'auctionManager') {
+            $user->syncRoles('auctionManager');
+        } elseif ($request->role === 'user') {
+            $user->syncRoles('user');
         }
 
         // Vista on es llisten els usuaris.
@@ -186,13 +183,15 @@ class UserController extends Controller
         if ($user->id === 1) {
             // back() crea una redirecció a la última localització de l'usuari
             // abans d'arribar aquí.
-            return back()->with('warning', 'No pots esborrar l\'usuari amb ID = 1.');
+            $missatge=session()->flash('warning', 'No pots esborrar l\'usuari amb ID = 1.');
+            return back()->with($missatge);
         } else {
             // Eliminar l'usuari.
             $user->delete();
 
             // Vista on es llisten els usuaris.
-            return back()->with('success', 'Usuari esborrat!');
+            $missatge=session()->flash('success', 'Usuari esborrat!');
+            return back()->with($missatge);
         }
     }
 }
