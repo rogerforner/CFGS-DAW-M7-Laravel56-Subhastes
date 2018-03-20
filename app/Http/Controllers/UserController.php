@@ -39,7 +39,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.users.create');
+        return view('admin.users._form');
     }
 
     /**
@@ -113,7 +113,7 @@ class UserController extends Controller
             // abans d'arribar aquí.
             return back()->with('warning', 'No pots editar l\'usuari amb ID = 1.');
         } else {
-            return view('admin.users.edit', ['user' => $user]);
+            return view('admin.users._form', ['user' => $user]);
         }
     }
 
