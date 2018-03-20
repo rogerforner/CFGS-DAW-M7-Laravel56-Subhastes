@@ -16,15 +16,13 @@ Auth::routes();
 # Home
 TODO: afegir a admin
 *******************************************************************************/
-Route::get('/home', 'HomeController@index')->name('home');
+
 
 /*
 # Administració
 *******************************************************************************/
 Route::group(['prefix'=>'admin'], function() {
-  Route::get('/', function () {
-    return view('admin.index');
-  });
+  Route::get('/', 'HomeController@index')->name('home');
 
   Route::resource('categories','CategoryController');
   Route::resource('products','ProductController');

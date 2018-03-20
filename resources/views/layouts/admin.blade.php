@@ -14,7 +14,9 @@
 
     <!-- CSS -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+    <!-- FontAwesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
   </head>
   <body>
     <!-- Navbar -->
@@ -34,7 +36,11 @@
     <!-- Footer -->
     @include('layouts.partials.admin.footer')
 
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    
     <!-- JavaScript -->
     <script src="{{ asset('js/app.js') }}"></script>
+
   </body>
 </html>
