@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -63,10 +62,23 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        // Crear l'usuari.
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'password' => bcrypt($data['password']),
         ]);
+
+        // Contem els usuaris de la base de dades. Si només hi ha un usuari, és
+        // a dir, és el primer usuari que es registra, li assignem el rol "admin".
+        // Si hi ha més d'un usuari, assignarem el rol "free".
+        $userCount = User::count();
+        if ($userCount == 1) {
+            $user->assignRole('admin');
+        } else {
+            $user->assignRole('user');
+        }
+
+        return $user;
     }
 }
