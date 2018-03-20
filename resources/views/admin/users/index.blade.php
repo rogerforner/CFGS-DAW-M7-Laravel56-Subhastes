@@ -7,7 +7,7 @@
     <div class="col">
       <div class="card shadow-2">
         <div class="card-body">
-          <h5 class="card-title">Llistat d'usuaris</h5>
+          <h5 class="card-title">User's list</h5>
 
           {{-- Warning --}}
           @if (session('warning'))
@@ -35,12 +35,12 @@
               <thead class="bg-cream text-white">
                 <tr>
                   <th scope="col">ID</th>
-                  <th scope="col">Nom</th>
-                  <th scope="col">Correu electrònic</th>
-                  <th scope="col">Rol</th>
-                  <th scope="col">Creat</th>
-                  <th scope="col">Modificat</th>
-                  <th scope="col">Accions</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">E-mail</th>
+                  <th scope="col">Role</th>
+                  <th scope="col">Created</th>
+                  <th scope="col">Updated</th>
+                  <th scope="col">Options</th>
                 </tr>
               </thead>
               <tbody>
@@ -53,7 +53,7 @@
                       $obtainRoleName = $user->roles()->pluck('name')->implode(' ');
                       $roleName = '';
                       if ($obtainRoleName == 'admin') {
-                        $roleName = 'Administrador/ra';
+                        $roleName = 'Administrator';
                       } elseif ($obtainRoleName == 'user') {
                         $roleName = 'Basic User';
                       } elseif ($obtainRoleName == 'auctionManager') {
@@ -94,7 +94,7 @@
                   </tr>
                 @empty
                   <tr>
-                    <td colspan="4">Encara no hi ha usuaris. <a href="{{ action('UserController@create') }}">Crear usuari</a>.</td>
+                    <td colspan="4">There're no users. <a href="{{ action('UserController@create') }}">Create a new one!</a>.</td>
                   </tr>
                 @endforelse
               </tbody>
