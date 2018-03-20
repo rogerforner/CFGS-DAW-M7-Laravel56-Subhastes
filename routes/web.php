@@ -36,3 +36,6 @@ Route::group(['prefix'=>'admin'], function() {
 Route::group(['prefix'=>'client'], function() {
 
 });
+Route::group(['prefix'=>'admin'], function(){
+    Route::resource('users','UserController');
+});
