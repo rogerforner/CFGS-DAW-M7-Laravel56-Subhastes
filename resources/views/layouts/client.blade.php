@@ -18,7 +18,7 @@
   </head>
   <body>
     <!-- Navbar -->
-    @include('layouts.partials.navbar')
+    @include('layouts.partials.client.navbar')
 
     <!-- Contingut -->
     <main id="client">
