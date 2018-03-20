@@ -26,7 +26,7 @@ Route::group(['prefix'=>'admin'], function() {
     return view('admin.index');
   });
 
-  Route::resource('categories','VategoryController');
+  Route::resource('categories','CategoryController');
   Route::resource('products','ProductController');
 });
 
