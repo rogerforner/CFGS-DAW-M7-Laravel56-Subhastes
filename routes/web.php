@@ -1,25 +1,41 @@
 <?php
 
 /*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-// Pàgina d'inici del lloc web.
+# Pàgina d'inici
+*******************************************************************************/
 Route::get('/', function () {
     return view('index');
 });
 
-// Pàgina d'inici del panell d'administració.
-Route::get('/admin', function () {
+/*
+# Auth
+*******************************************************************************/
+Auth::routes();
+
+/*
+# Home
+TODO: afegir a admin
+*******************************************************************************/
+Route::get('/home', 'HomeController@index')->name('home');
+
+/*
+# Administració
+*******************************************************************************/
+Route::group(['prefix'=>'admin'], function() {
+  Route::get('/', function () {
     return view('admin.index');
+  });
+
+  Route::resource('categories','VategoryController');
+  Route::resource('products','ProductController');
 });
 
+/*
+# Client
+*******************************************************************************/
+Route::group(['prefix'=>'client'], function() {
+
+});
 Route::group(['prefix'=>'admin'], function(){
-    Route::resource('products','ProductController');
+    Route::resource('users','UserController');
 });

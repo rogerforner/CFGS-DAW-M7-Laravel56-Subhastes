@@ -18,9 +18,6 @@
   </head>
   <body>
     <!-- Navbar -->
-    @include('layouts.partials.navbar')
-
-    <!-- Navbar -->
     @include('layouts.partials.admin.navbar')
 
     <main id="admin">
