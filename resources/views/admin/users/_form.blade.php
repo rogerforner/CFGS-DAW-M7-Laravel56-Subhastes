@@ -32,26 +32,26 @@
           @endif
             {{-- Usuari --}}
             <div class="form-group">
-              <label for="userName">Nom</label>
+              <label for="userName">Name</label>
               <input type="text" name="name" value="{{ $user->name or old('name') }}" class="form-control" id="userName" aria-describedby="nameHelp" required>
-              <small id="nameHelp" class="form-text text-muted">Nom complet.</small>
+              <small id="nameHelp" class="form-text text-muted">All name.</small>
             </div>
             {{-- Email --}}
             <div class="form-group">
-              <label for="userEmail">Correu electrònic</label>
+              <label for="userEmail">E-mail</label>
               <input type="email" name="email" value="{{ $user->email or old('email') }}" class="form-control" id="userEmail" aria-describedby="emailHelp" required>
-              <small id="emailHelp" class="form-text text-muted">Un correu electrònic únic (a la base de dades).</small>
+              <small id="emailHelp" class="form-text text-muted">Only one e-mail on the data base.</small>
             </div>
             {{-- Password --}}
             <div class="form-group">
               <label for="userPassword">Password</label>
               <input type="password" name="password" class="form-control" id="userPassword" aria-describedby="passwordHelp" required>
-              <small id="passwordHelp" class="form-text text-muted">Una clau d'accés amb no menys de 6 caràcters.</small>
+              <small id="passwordHelp" class="form-text text-muted">The password needs to have at last 6 characters.</small>
             </div>
             <div class="form-group">
-              <label for="userPasswordConf">Password (confirmació)</label>
+              <label for="userPasswordConf">Reenter the password</label>
               <input type="password" name="password_confirmation" class="form-control" id="userPasswordConf" aria-describedby="passwordConfHelp" required>
-              <small id="passwordConfHelp" class="form-text text-muted">Ha de ser igual a l'anterior (evitar errors).</small>
+              <small id="passwordConfHelp" class="form-text text-muted">Enter the same password (no errors).</small>
             </div>
             {{-- Rol --}}
             <div class="form-group">
@@ -61,7 +61,7 @@
                 <option value="auctionManager">Auction Manager</option>
                 <option value="user">Basic User</option>
               </select>
-              <small id="roleHelp" class="form-text text-muted">El rol determinarà les accions que es podran dur a terme.</small>
+              <small id="roleHelp" class="form-text text-muted">Rol gives the permissions to the users.</small>
             </div>
             {{-- Crear --}}
             <button type="submit" class="btn btn-primary">Save</button>
