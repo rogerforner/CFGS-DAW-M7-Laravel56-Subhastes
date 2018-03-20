@@ -10060,7 +10060,7 @@ main#client {
 }
 
 main#admin {
-  min-height: calc(100vh - 139px);
+  min-height: calc(100vh - 100px);
 }
 
 nav.navbar .icon-bar {
