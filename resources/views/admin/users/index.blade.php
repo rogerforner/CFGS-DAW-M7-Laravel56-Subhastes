@@ -54,12 +54,10 @@
                       $roleName = '';
                       if ($obtainRoleName == 'admin') {
                         $roleName = 'Administrador/ra';
-                      } elseif ($obtainRoleName == 'moderator') {
-                        $roleName = 'Moderador/ra';
-                      } elseif ($obtainRoleName == 'pro') {
-                        $roleName = 'Premium';
-                      } elseif ($obtainRoleName == 'free') {
-                        $roleName = 'Gratuït';
+                      } elseif ($obtainRoleName == 'user') {
+                        $roleName = 'Basic User';
+                      } elseif ($obtainRoleName == 'auctionManager') {
+                        $roleName = 'Auction Manager';
                       } else {
                         $roleName = '-';
                       }

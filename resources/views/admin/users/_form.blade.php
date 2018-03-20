@@ -25,19 +25,16 @@
           @else
             {{Form::open(['url' => "admin/users/$user->id"])}}
           @endif
-          {{-- Formulari --}}
-          <form action="{{ action('UserController@store') }}" method="post">
-            {{ csrf_field() }}
             {{-- Usuari --}}
             <div class="form-group">
               <label for="userName">Nom</label>
-              <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="userName" aria-describedby="nameHelp" required>
+              <input type="text" name="name" value="{{ $user->name or old('name') }}" class="form-control" id="userName" aria-describedby="nameHelp" required>
               <small id="nameHelp" class="form-text text-muted">Nom complet.</small>
             </div>
             {{-- Email --}}
             <div class="form-group">
               <label for="userEmail">Correu electrònic</label>
-              <input type="email" name="email" value="{{ old('email') }}" class="form-control" id="userEmail" aria-describedby="emailHelp" required>
+              <input type="email" name="email" value="{{ $user->email or old('email') }}" class="form-control" id="userEmail" aria-describedby="emailHelp" required>
               <small id="emailHelp" class="form-text text-muted">Un correu electrònic únic (a la base de dades).</small>
             </div>
             {{-- Password --}}
@@ -55,10 +52,9 @@
             <div class="form-group">
               <label for="userRole">Rol</label>
               <select name="role" class="form-control" id="userRole" aria-describedby="roleHelp">
-                <option value="free">Gratuït</option>
-                <option value="pro">Premium</option>
-                <option value="moderator">Moderador/ra</option>
-                <option value="admin">Administrador/ra</option>
+                <option value="admin">Administrator</option>
+                <option value="auctionManager">Auction Manager</option>
+                <option value="user">Basic User</option>
               </select>
               <small id="roleHelp" class="form-text text-muted">El rol determinarà les accions que es podran dur a terme.</small>
             </div>
