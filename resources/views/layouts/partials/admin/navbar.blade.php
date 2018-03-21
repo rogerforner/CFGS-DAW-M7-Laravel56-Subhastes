@@ -17,15 +17,6 @@
         </div>
       </li>
 
-      {{-- Enllaç "Dropdown" (Rols) --}}
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownRoles" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-secret"></i> Rols</a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownRoles">
-          <a class="dropdown-item" href="#">Llistar</a>
-          <a class="dropdown-item" href="#">Crear</a>
-        </div>
-      </li>
-
       {{-- Enllaç "Dropdown" (Subhastes) --}}
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAuctions" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-euro-sign"></i> Subhastes</a>
