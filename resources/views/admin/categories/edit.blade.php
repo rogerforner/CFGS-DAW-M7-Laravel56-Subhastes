@@ -28,6 +28,12 @@
               ])
             {{ Form::close() }}
 
+            {{-- Tornar enrere --}}
+            <p class="text-right">
+              <a href="{{ action('CategoryController@index') }}" class="card-link">
+                <i class="far fa-arrow-alt-circle-left"></i> Go back
+              </a>
+            </p>
           </div>
         </div><!-- /.card -->
       </div><!-- /.col -->

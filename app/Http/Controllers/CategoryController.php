@@ -72,7 +72,11 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        // Obtenir la categoria.
+        $category = Category::findOrFail($id);
+
+        // Vista d'edició.
+        return view('admin.categories.show', compact('category'));
     }
 
     /**
