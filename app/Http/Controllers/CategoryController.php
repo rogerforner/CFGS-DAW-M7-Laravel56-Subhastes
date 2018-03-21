@@ -127,6 +127,13 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // Obtenir la categoria.
+        $category = Category::findOrFail($id);
+
+        // Eliminar l'usuari.
+        $category->delete();
+
+        // Vista on es llisten els usuaris.
+        return back()->with('success', "Category \"$category->name\" removed!");
     }
 }

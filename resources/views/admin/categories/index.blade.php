@@ -60,14 +60,16 @@
                         </a>
                         {{-- Eliminar --}}
                         <a class="btn btn-dark btn-sm rounded-right" role="button" href="" data-tooltip="tooltip" data-placement="top" title="Eliminar"
-                           data-toggle="modal" data-target="#deleteUser-{{ $category->id }}">
+                           data-toggle="modal" data-target="#deleteCategory-{{ $category->id }}">
                           <i class="fas fa-trash"></i>
                         </a>
-                        {{-- @include('admin.categories.partials.modal', [
-                          'id'    => $category->id,
-                          'name'  => $category->name,
-                          'email' => $category->description
-                        ]) --}}
+                        @include('admin.categories.partials.modal', [
+                          'id'          => $category->id,
+                          'name'        => $category->name,
+                          'description' => $category->description,
+                          'created'     => $category->created_at,
+                          'updated'     => $category->updated_at
+                        ])
                       </div><!-- /.btn-group -->
                     </td>
                   </tr>
