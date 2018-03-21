@@ -7,7 +7,7 @@
     <div class="col">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">List of categories</h5>
+          <h5 class="card-title">List of all categories</h5>
 
           {{-- Warning --}}
           @if (session('warning'))
