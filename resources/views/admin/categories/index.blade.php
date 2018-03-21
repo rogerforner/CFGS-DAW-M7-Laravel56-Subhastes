@@ -50,16 +50,16 @@
                       <div class="btn-group" role="group" aria-label="Accions">
                         {{-- Veure --}}
                         <a class="btn btn-dark btn-sm" href="{{ action('CategoryController@show', ['id' => $category->id]) }}" role="button"
-                           data-toggle="tooltip" data-placement="top" title="Veure">
+                           data-toggle="tooltip" data-placement="top" title="See">
                           <i class="fas fa-eye"></i>
                         </a>
                         {{-- Editar --}}
                         <a class="btn btn-dark btn-sm" href="{{ action('CategoryController@edit', ['id' => $category->id]) }}" role="button"
-                           data-toggle="tooltip" data-placement="top" title="Editar">
+                           data-toggle="tooltip" data-placement="top" title="Edit">
                           <i class="fas fa-edit"></i>
                         </a>
                         {{-- Eliminar --}}
-                        <a class="btn btn-dark btn-sm rounded-right" role="button" href="" data-tooltip="tooltip" data-placement="top" title="Eliminar"
+                        <a class="btn btn-dark btn-sm rounded-right" role="button" href="" data-tooltip="tooltip" data-placement="top" title="Delete"
                            data-toggle="modal" data-target="#deleteCategory-{{ $category->id }}">
                           <i class="fas fa-trash"></i>
                         </a>
