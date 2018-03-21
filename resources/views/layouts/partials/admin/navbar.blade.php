@@ -48,8 +48,8 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCategories" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-tags"></i> Categories</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownCategories">
-          <a class="dropdown-item" href="#">Llistar</a>
-          <a class="dropdown-item" href="#">Crear</a>
+          <a class="dropdown-item" href="{{action('CategoryController@index')}}">Llistar</a>
+          <a class="dropdown-item" href="{{action('CategoryController@create')}}">Crear</a>
         </div>
       </li>
     </ul>

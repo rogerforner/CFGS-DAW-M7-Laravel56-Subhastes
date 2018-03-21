@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+use App\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -23,7 +25,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+
+        return view('admin.categories.index', compact('categories'));
     }
 
     /**
@@ -33,7 +37,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categories.create');
     }
 
     /**
@@ -44,7 +48,20 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validar dades obtingudes del formulari.
+        $data = $request->validate([
+            'name'        => 'required|string|max:255',
+            'description' => 'max:255',
+        ]);
+
+        // Crear la categoria (la validació ha sortit bé).
+        $user = Category::create([
+            'name'        => $data['name'],
+            'description' => $data['description'],
+        ]);
+
+        // Vista amb el llistat de categories.
+        return redirect()->action('CategoryController@index');
     }
 
     /**
@@ -66,7 +83,11 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        // Obtenir la categoria.
+        $category = Category::findOrFail($id);
+
+        // Vista d'edició.
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**
@@ -78,7 +99,20 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Obtenir la categoria.
+        $category = Category::findOrFail($id);
+
+        // Validar dades obtingudes del formulari.
+        $data = $request->validate([
+            'name'        => 'required|string|max:255',
+            'description' => 'max:255',
+        ]);
+
+        // Actualitzar la categoria (la validació ha sortit bé).
+        $category->update($data);
+
+        // Vista amb el llistat de categories.
+        return redirect()->action('CategoryController@index');
     }
 
     /**
