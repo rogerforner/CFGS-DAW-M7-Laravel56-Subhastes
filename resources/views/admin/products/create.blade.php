@@ -3,15 +3,15 @@
 @section('description', 'Una descripció')
 @section('content')
 
-<div class="row my-3">
+<div class="row my-3 mx-0">
     <div class="col-10 col-sm-10 col-md-6 mx-auto">
         <div class="card">
             <h5 class="card-header">Create new product</h5>
             <div class="card-body">
             @if($product->exists)
-                {{Form::open(['url' => '/admin/products'])}}   
-            @else
                 {{Form::open(['url' => "/admin/products/$product->id"])}}
+            @else
+                {{Form::open(['url' => '/admin/products','files' => true])}}   
             @endif
                 {{Form::token()}}
                 <div class="form-group">
@@ -31,7 +31,7 @@
                     {{Form::file('image',['class' => 'form-control'])}}
                 </div>
                 <div class="form-group">
-                    {{Form::label('categories', 'Categories')}}
+                    {{Form::label('categories[]', 'Categories')}}
                     <input class="form-control mb-2" id="myInput" type="text" placeholder="Search..">
                         <div class="table-responsive">
                         <table class="table table-striped table-hover">
@@ -46,7 +46,7 @@
                                 @foreach ($categories as $category)
                                     <tr>
                                         <td class="chck">
-                                            {{Form::checkbox('categories',$category->id)}}
+                                            {{Form::checkbox('categories[]',$category->id)}}
                                         </td>
                                         <td class="text-truncate cat-name">
                                             {{$category->name}}
@@ -60,6 +60,7 @@
                         </table>
                     </div>
                 </div>
+                {{Form::submit('Create product')}}
                 {{Form::close()}}
             </div>
         </div><!-- /.card -->
@@ -77,11 +78,8 @@
     });
 </script>
 <style>
-    ::-webkit-scrollbar{
+    .table-responsive ::-webkit-scrollbar{
         visibility: hidden!important;
-    }
-    ::-webkit-scrollbar:horizontal{
-        background-color: blue;
     }
     thead, tbody, tr, td, th { display: block; }
     tr:after {

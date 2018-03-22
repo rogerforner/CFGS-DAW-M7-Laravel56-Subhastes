@@ -15,7 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        dd(Product::all());
     }
 
     /**
@@ -38,7 +38,20 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->only('name','description','characteristics');
+        $image = $request->file('image');
+
+        $path = 'Product_'.time().'.'.$image->getClientOriginalExtension();
+        $destinationPath = public_path('images');
+        $image->move($destinationPath, $path);
+        $r=(string)$request->root().'/images/'.''.$path;
+        $data = array_merge($data, array('image' => $r));
+        
+        $product = Product::create($data);
+        $product->registerCategories($product->id, $request->only('categories')['categories']);
+        
+        session()->flash('success','Product created succesfully!');
+        return redirect()->route('products.index');
     }
 
     /**
