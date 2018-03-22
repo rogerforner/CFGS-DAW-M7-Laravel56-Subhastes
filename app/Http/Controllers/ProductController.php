@@ -3,11 +3,22 @@
 namespace App\Http\Controllers;
 use App\Product;
 use App\Category;
+use DB;
 
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +26,14 @@ class ProductController extends Controller
      */
     public function index()
     {
-        dd(Product::all());
+        $cat_names = [];
+        $products = Product::paginate(6);
+        foreach($products as $prod){
+            $names = $prod->getCategories($prod->id);
+            $cat_names[$prod->id] = $names;
+        }
+        
+        return view('admin.products.index')->with(['products' => $products, 'categories' => $cat_names]);
     }
 
     /**
@@ -27,7 +45,7 @@ class ProductController extends Controller
     {
         $product = new Product;
         $categories = Category::all();
-        return view('admin.products.create')->with(['categories'=>$categories,'product'=>$product]);
+        return view('admin.products.partials.form')->with(['categories'=>$categories,'product'=>$product]);
     }
 
     /**
@@ -62,7 +80,9 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::find($id);
+
+        return view('admin.products.show', ['product' => $product]);
     }
 
     /**
@@ -73,7 +93,14 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::find($id);
+        $categories = Category::all();
+        $old_cats = DB::table('product_has_category')->where('product_id',$id)->get(['category_id']);
+        $old_cats_array = [];
+        foreach($old_cats as $old){
+            $old_cats_array[] = $old->category_id;
+        }
+        return view('admin.products.partials.form')->with(['product' => $product, 'categories' => $categories, 'old_cats' => $old_cats_array]);
     }
 
     /**
@@ -85,7 +112,23 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->only('name','description','characteristics');
+        $image = $request->file('image');
+
+        if($image !== NULL){
+            $path = 'Product_'.time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('images');
+            $image->move($destinationPath, $path);
+            $r=(string)$request->root().'/images/'.''.$path;
+            $data = array_merge($data, array('image' => $r));
+        }
+        
+        $product = Product::find($id);
+        $product->update($data);
+        $product->registerCategories($product->id, $request->only('categories')['categories']);
+        
+        session()->flash('success','Product updated succesfully!');
+        return redirect()->route('products.index');
     }
 
     /**
@@ -96,6 +139,9 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('product_has_category')->where('product_id','=',$id)->delete();
+        Product::destroy($id);
+        session()->flash('success','Product succesfully deleted!');
+        return redirect()->route('products.index');
     }
 }

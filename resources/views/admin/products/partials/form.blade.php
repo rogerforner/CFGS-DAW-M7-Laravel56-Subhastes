@@ -9,22 +9,21 @@
             <h5 class="card-header">Create new product</h5>
             <div class="card-body">
             @if($product->exists)
-                {{Form::open(['url' => "/admin/products/$product->id"])}}
+                {{Form::open(['route' => ['products.update',$product->id], 'files' => true, 'method' => 'PUT'])}}
             @else
-                {{Form::open(['url' => '/admin/products','files' => true])}}   
+                {{Form::open(['route' => ['products.index'],'files' => true])}}   
             @endif
-                {{Form::token()}}
                 <div class="form-group">
                     {{Form::label('name', 'Name')}}
-                    {{Form::text('name',$product->name or old('name'),['class' => 'form-control'])}}
+                    {{Form::text('name',$product->name,['class' => 'form-control'])}}
                 </div>
                 <div class="form-group">
                     {{Form::label('description', 'Description')}}
-                    {{Form::textarea('description',$product->description or old('description'),['class' => 'form-control'])}}
+                    {{Form::textarea('description',$product->description,['class' => 'form-control'])}}
                 </div>
                 <div class="form-group">
                     {{Form::label('characteristics', 'Characteristics')}}
-                    {{Form::textarea('characteristics',$product->characteristics or old('characteristics'),['class' => 'form-control'])}}
+                    {{Form::textarea('characteristics',$product->characteristics,['class' => 'form-control'])}}
                 </div>
                 <div class="form-group">
                     {{Form::label('image', 'Image')}}
@@ -46,12 +45,16 @@
                                 @foreach ($categories as $category)
                                     <tr>
                                         <td class="chck">
-                                            {{Form::checkbox('categories[]',$category->id)}}
+                                            @if($product->exists && in_array($category->id, $old_cats))
+                                                {{Form::checkbox('categories[]',$category->id,true)}}
+                                            @else
+                                                {{Form::checkbox('categories[]',$category->id)}}
+                                            @endif
                                         </td>
-                                        <td class="text-truncate cat-name">
+                                        <td class="cat-name">
                                             {{$category->name}}
                                         </td>
-                                        <td class="text-truncate cat-desc">
+                                        <td class="cat-desc">
                                             {{$category->description}}
                                         </td>
                                     </tr>
@@ -60,7 +63,7 @@
                         </table>
                     </div>
                 </div>
-                {{Form::submit('Create product')}}
+                {{Form::submit('Create product',['class' => 'btn btn-primary'])}}
                 {{Form::close()}}
             </div>
         </div><!-- /.card -->
