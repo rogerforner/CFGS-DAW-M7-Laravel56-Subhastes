@@ -31,11 +31,88 @@
                     {{Form::file('image',['class' => 'form-control'])}}
                 </div>
                 <div class="form-group">
-
+                    {{Form::label('categories', 'Categories')}}
+                    <input class="form-control mb-2" id="myInput" type="text" placeholder="Search..">
+                        <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th class="chck">#</th>
+                                    <th class="cat-name">Category</th>
+                                    <th class="cat-desc">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody id="myTable">
+                                @foreach ($categories as $category)
+                                    <tr>
+                                        <td class="chck">
+                                            {{Form::checkbox('categories',$category->id)}}
+                                        </td>
+                                        <td class="text-truncate cat-name">
+                                            {{$category->name}}
+                                        </td>
+                                        <td class="text-truncate cat-desc">
+                                            {{$category->description}}
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 {{Form::close()}}
             </div>
         </div><!-- /.card -->
     </div><!-- /.col -->
 </div><!-- /.row -->
+    <!-- JQuery -->
+<script>
+    $(document).ready(function(){
+        $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
+<style>
+    ::-webkit-scrollbar{
+        visibility: hidden!important;
+    }
+    ::-webkit-scrollbar:horizontal{
+        background-color: blue;
+    }
+    thead, tbody, tr, td, th { display: block; }
+    tr:after {
+        content: ' ';
+        display: block;
+        visibility: hidden;
+        clear: both;
+    }
+
+
+    tbody {
+        max-height: 200px;
+        overflow-y: auto;
+    }
+
+    thead {
+        /* fallback */
+    }
+
+    .chck{
+        width: 10%;
+        float: left;
+    }
+
+    tbody .cat-name, thead .cat-name {
+        width: 30%;
+        float: left;
+    }
+    tbody .cat-desc, thead .cat-desc {
+        width: 60%;
+        float: left;
+    }
+</style>
 @endsection
