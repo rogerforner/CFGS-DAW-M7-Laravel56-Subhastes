@@ -131,18 +131,19 @@ I el contingut s'ha d'iniciar amb un **row**.
 @section('description', 'Una descripció')
 @section('content')
 
-<div class="row my-3">
-  <div class="col-md-6">
-    <div class="card">
-      <h5 class="card-header">Apartat 1</h5>
-      <div class="card-body">
-        <h5 class="card-title">Tirant lo Blanc</h5>
-        <p class="card-text">[...]</p>
-      </div>
-    </div><!-- /.card -->
-  </div><!-- /.col -->
-</div><!-- /.row -->
-
+<div class="container my-5">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <h5 class="card-header">Apartat 1</h5>
+        <div class="card-body">
+          <h5 class="card-title">Tirant lo Blanc</h5>
+          <p class="card-text">[...]</p>
+        </div>
+      </div><!-- /.card -->
+    </div><!-- /.col -->
+  </div><!-- /.row -->
+</div><!-- /.container -->
 @endsection
 ```
 
@@ -171,7 +172,7 @@ I el contingut s'ha d'iniciar amb un **container** o **container-fluid**.
 @section('description', 'Una descripció')
 @section('content')
 
-<div class="container">
+<div class="container my-5">
   <div class="row">
     <div class="col">
       <p>[...]</p>

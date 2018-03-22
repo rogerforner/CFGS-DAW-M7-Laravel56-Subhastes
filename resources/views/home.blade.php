@@ -1,5 +1,6 @@
-@extends('layouts.app')
-
+@extends('layouts.admin')
+@section('title', 'Un títol')
+@section('description', 'Una descripció')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

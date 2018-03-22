@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 
@@ -7,7 +7,12 @@
     <div class="col">
       <div class="card shadow-2">
         <div class="card-body">
-          <h5 class="card-title">Crear un usuari</h5>
+          @if ($user->exists)
+            <h5 class="card-title">Edit user</h5>
+          @else
+            <h5 class="card-title">Create user</h5>
+          @endif
+
 
           {{-- Errors --}}
           @if ($errors->any())
@@ -21,55 +26,51 @@
           @endif
 
           @if ($user->exists)
-            {{Form::open(['url' => '/admin/users'])}}
+            {{Form::open(['url' => "admin/users/$user->id",'method'=>'put'])}}
           @else
-            {{Form::open(['url' => "admin/users/$user->id"])}}
+            {{Form::open(['url' => '/admin/users'])}}
           @endif
-          {{-- Formulari --}}
-          <form action="{{ action('UserController@store') }}" method="post">
-            {{ csrf_field() }}
             {{-- Usuari --}}
             <div class="form-group">
-              <label for="userName">Nom</label>
-              <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="userName" aria-describedby="nameHelp" required>
-              <small id="nameHelp" class="form-text text-muted">Nom complet.</small>
+              <label for="userName">Name</label>
+              <input type="text" name="name" value="{{ $user->name or old('name') }}" class="form-control" id="userName" aria-describedby="nameHelp" required>
+              <small id="nameHelp" class="form-text text-muted">All name.</small>
             </div>
             {{-- Email --}}
             <div class="form-group">
-              <label for="userEmail">Correu electrònic</label>
-              <input type="email" name="email" value="{{ old('email') }}" class="form-control" id="userEmail" aria-describedby="emailHelp" required>
-              <small id="emailHelp" class="form-text text-muted">Un correu electrònic únic (a la base de dades).</small>
+              <label for="userEmail">E-mail</label>
+              <input type="email" name="email" value="{{ $user->email or old('email') }}" class="form-control" id="userEmail" aria-describedby="emailHelp" required>
+              <small id="emailHelp" class="form-text text-muted">Only one e-mail on the data base.</small>
             </div>
             {{-- Password --}}
             <div class="form-group">
               <label for="userPassword">Password</label>
               <input type="password" name="password" class="form-control" id="userPassword" aria-describedby="passwordHelp" required>
-              <small id="passwordHelp" class="form-text text-muted">Una clau d'accés amb no menys de 6 caràcters.</small>
+              <small id="passwordHelp" class="form-text text-muted">The password needs to have at last 6 characters.</small>
             </div>
             <div class="form-group">
-              <label for="userPasswordConf">Password (confirmació)</label>
+              <label for="userPasswordConf">Reenter the password</label>
               <input type="password" name="password_confirmation" class="form-control" id="userPasswordConf" aria-describedby="passwordConfHelp" required>
-              <small id="passwordConfHelp" class="form-text text-muted">Ha de ser igual a l'anterior (evitar errors).</small>
+              <small id="passwordConfHelp" class="form-text text-muted">Enter the same password (no errors).</small>
             </div>
             {{-- Rol --}}
             <div class="form-group">
               <label for="userRole">Rol</label>
               <select name="role" class="form-control" id="userRole" aria-describedby="roleHelp">
-                <option value="free">Gratuït</option>
-                <option value="pro">Premium</option>
-                <option value="moderator">Moderador/ra</option>
-                <option value="admin">Administrador/ra</option>
+                <option value="admin">Administrator</option>
+                <option value="auctionManager">Auction Manager</option>
+                <option value="user">Basic User</option>
               </select>
-              <small id="roleHelp" class="form-text text-muted">El rol determinarà les accions que es podran dur a terme.</small>
+              <small id="roleHelp" class="form-text text-muted">Rol gives the permissions to the users.</small>
             </div>
             {{-- Crear --}}
-            <button type="submit" class="btn btn-primary">Crear</button>
+            <button type="submit" class="btn btn-primary">Save</button>
           </form>
           <br>
           {{-- Tornar enrere --}}
           <p class="text-right">
             <a href="{{ action('UserController@index') }}" class="card-link">
-              <i class="far fa-arrow-alt-circle-left"></i> Tornar
+              <i class="far fa-arrow-alt-circle-left"></i> Go back
             </a>
           </p>
         </div>

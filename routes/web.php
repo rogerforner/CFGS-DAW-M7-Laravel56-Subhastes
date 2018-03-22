@@ -13,29 +13,19 @@ Route::get('/', function () {
 Auth::routes();
 
 /*
-# Home
-TODO: afegir a admin
-*******************************************************************************/
-Route::get('/home', 'HomeController@index')->name('home');
-
-/*
 # Administració
 *******************************************************************************/
-Route::group(['prefix'=>'admin'], function() {
-  Route::get('/', function () {
-    return view('admin.index');
-  });
-
-  Route::resource('categories','VategoryController');
-  Route::resource('products','ProductController');
+Route::group(['prefix'=>'admin'], function () {
+    Route::resource('/', 'HomeController', ['only' => ['index']]);
+    Route::resource('categories', 'CategoryController');
+    Route::resource('products', 'ProductController');
 });
 
 /*
 # Client
 *******************************************************************************/
-Route::group(['prefix'=>'client'], function() {
-
+Route::group(['prefix'=>'client'], function () {
 });
-Route::group(['prefix'=>'admin'], function(){
-    Route::resource('users','UserController');
+Route::group(['prefix'=>'admin'], function () {
+    Route::resource('users', 'UserController');
 });

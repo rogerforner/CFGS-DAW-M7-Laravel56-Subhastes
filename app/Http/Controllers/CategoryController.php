@@ -2,10 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+use App\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +25,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+
+        return view('admin.categories.index', compact('categories'));
     }
 
     /**
@@ -23,7 +37,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categories.create');
     }
 
     /**
@@ -34,7 +48,20 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validar dades obtingudes del formulari.
+        $data = $request->validate([
+            'name'        => 'required|string|max:255',
+            'description' => 'max:255',
+        ]);
+
+        // Crear la categoria (la validació ha sortit bé).
+        $user = Category::create([
+            'name'        => $data['name'],
+            'description' => $data['description'],
+        ]);
+
+        // Vista amb el llistat de categories.
+        return redirect()->action('CategoryController@index');
     }
 
     /**
@@ -45,7 +72,11 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        // Obtenir la categoria.
+        $category = Category::findOrFail($id);
+
+        // Vista d'edició.
+        return view('admin.categories.show', compact('category'));
     }
 
     /**
@@ -56,7 +87,11 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        // Obtenir la categoria.
+        $category = Category::findOrFail($id);
+
+        // Vista d'edició.
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**
@@ -68,7 +103,20 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Obtenir la categoria.
+        $category = Category::findOrFail($id);
+
+        // Validar dades obtingudes del formulari.
+        $data = $request->validate([
+            'name'        => 'required|string|max:255',
+            'description' => 'max:255',
+        ]);
+
+        // Actualitzar la categoria (la validació ha sortit bé).
+        $category->update($data);
+
+        // Vista amb el llistat de categories.
+        return redirect()->action('CategoryController@index');
     }
 
     /**
@@ -79,6 +127,13 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // Obtenir la categoria.
+        $category = Category::findOrFail($id);
+
+        // Eliminar l'usuari.
+        $category->delete();
+
+        // Vista on es llisten els usuaris.
+        return back()->with('success', "Category \"$category->name\" removed!");
     }
 }

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 
@@ -7,25 +7,25 @@
     <div class="col">
       <div class="card shadow-2">
         <div class="card-body">
-          <h5 class="card-title">Dades de l'usuari</h5>
+          <h5 class="card-title">User info</h5>
           {{-- Dades --}}
           <dl class="row">
-            <dt class="col-sm-2">Nom</dt>
+            <dt class="col-sm-2">Name</dt>
             <dd class="col-sm-10">{{ $user->name }}</dd>
 
-            <dt class="col-sm-2">Correu electrònic</dt>
+            <dt class="col-sm-2">E-mail</dt>
             <dd class="col-sm-10">{{ $user->email }}</dd>
 
-            <dt class="col-sm-2">Creat el</dt>
+            <dt class="col-sm-2">Created at</dt>
             <dd class="col-sm-10">{{ $user->created_at }}</dd>
 
-            <dt class="col-sm-2">Actualitzat el</dt>
+            <dt class="col-sm-2">Updated at</dt>
             <dd class="col-sm-10">{{ $user->updated_at }}</dd>
           </dl>
           {{-- Tornar enrere --}}
           <p class="text-right">
             <a href="{{ action('UserController@index') }}" class="card-link">
-              <i class="far fa-arrow-alt-circle-left"></i> Tornar
+              <i class="far fa-arrow-alt-circle-left"></i> Go back
             </a>
           </p>
         </div>

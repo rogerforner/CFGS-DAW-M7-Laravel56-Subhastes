@@ -14,6 +14,7 @@
 
     <!-- CSS -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
   
     <!-- JQuery -->
@@ -23,21 +24,19 @@
     <!-- Navbar -->
     @include('layouts.partials.admin.navbar')
 
+    <!-- Contingut -->
     <main id="admin">
-      <div class="container-fluid">
-        <div class="row">
-          <!-- Contingut -->
-          <div id="content" class="col">
-            @yield('content')
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
+      @yield('content')
     </main>
 
     <!-- Footer -->
     @include('layouts.partials.admin.footer')
 
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
     <!-- JavaScript -->
     <script src="{{ asset('js/app.js') }}"></script>
+
   </body>
 </html>
