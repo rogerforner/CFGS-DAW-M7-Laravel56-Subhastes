@@ -20,19 +20,25 @@ class UserSeeder extends Seeder
 
         // Inserir usuaris.
         $adminUser = User::create([
+            'nickname' => 'farruquito_69',
             'name'     => 'admin',
+            'surname'  => 'adminSurname',
             'email'    => 'admin@example.com',
             'password' => bcrypt('123456'),
         ]);
 
         $modUser = User::create([
+            'nickname' => 'LeoMessi_Official',
             'name'     => 'auctionManager',
+            'surname'  => 'ManagerSurname',
             'email'    => 'auctionManager@example.com',
             'password' => bcrypt('123456'),
         ]);
 
         $User = User::create([
+            'nickname' => 'CR7_BalonDePlaya',
             'name'     => 'user',
+            'surname'  => 'userSurname',
             'email'    => 'user@example.com',
             'password' => bcrypt('123456'),
         ]);
