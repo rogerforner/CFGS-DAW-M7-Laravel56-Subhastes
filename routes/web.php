@@ -19,6 +19,7 @@ Route::group(['prefix'=>'admin'], function () {
     Route::resource('/', 'HomeController', ['only' => ['index']]);
     Route::resource('categories', 'CategoryController');
     Route::resource('products', 'ProductController');
+    Route::resource('auctions', 'AuctionAdminController');
 });
 
 /*
