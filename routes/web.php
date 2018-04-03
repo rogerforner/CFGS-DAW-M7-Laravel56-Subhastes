@@ -20,6 +20,7 @@ Route::group(['prefix'=>'admin'], function () {
     Route::resource('categories', 'CategoryController');
     Route::resource('products', 'ProductController');
     Route::resource('auctions', 'AuctionAdminController');
+    Route::resource('users', 'UserController');
 });
 
 /*
@@ -27,9 +28,7 @@ Route::group(['prefix'=>'admin'], function () {
 *******************************************************************************/
 Route::group(['prefix'=>'client'], function () {
 });
-Route::group(['prefix'=>'admin'], function () {
-    Route::resource('users', 'UserController');
-});
+
 
 //---------------------------
 // route for view/blade file
