@@ -79,6 +79,18 @@ DB_PASSWORD=root
 
 _Depenent del projecte, es poden emplenar la resta de paràmetres de configuració, inclòs crear-ne de nous._
 
+Un cop configurada la base de dades hem de dur endavant les migracions. Amb aquestes es crearan les taules.
+
+```
+$ php artisan migrate
+```
+
+En el nostre cas hem creat uns usuaris d'exemple, per tal de poder-los inserir a la base de dades hem de dur endavant els "seeders".
+
+```
+$ php artisan migrate:refresh --seed
+```
+
 ## Assets
 
 En el nostre prjecte treballem amb fitxer JavaScript i SASS. Cada cop que en facis algun canvi s'ha de dur endavant:
