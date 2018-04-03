@@ -10,6 +10,9 @@
         "laravel/framework": "5.6.*",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "~5.0",
+        "guzzlehttp/guzzle": "~5.2",
+        "paypal/rest-api-sdk-php": "*",
+        "netshell/paypal": "dev-master",
         "spatie/laravel-permission": "^2.9"
     },
     "require-dev": {
