@@ -1132,7 +1132,7 @@
                 }
             ],
             "description": "Laravel-Paypal is simple package help you process direct credit card payments, stored credit card payments and PayPal account payments with your Laravel 5 projects using paypal REST API SDK.",
-            "time": "2017-02-16 19:13:59"
+            "time": "2017-02-16T19:13:59+00:00"
         },
         {
             "name": "nikic/php-parser",

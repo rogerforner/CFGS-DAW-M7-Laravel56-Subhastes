@@ -20,15 +20,13 @@ Route::group(['prefix'=>'admin'], function () {
     Route::resource('categories', 'CategoryController');
     Route::resource('products', 'ProductController');
     Route::resource('auctions', 'AuctionAdminController');
+    Route::resource('users', 'UserController');
 });
 
 /*
 # Client
 *******************************************************************************/
 Route::group(['prefix'=>'client'], function () {
-});
-Route::group(['prefix'=>'admin'], function () {
-    Route::resource('users', 'UserController');
 });
 
 //---------------------------
