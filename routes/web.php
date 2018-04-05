@@ -27,6 +27,7 @@ Route::group(['prefix'=>'admin'], function () {
 # Client
 *******************************************************************************/
 Route::group(['prefix'=>'client'], function () {
+  Route::resource('ProfileUsers', 'UserProfileController');
 });
 
 

@@ -47,7 +47,7 @@
               <i class="fas fa-user-circle"></i> {{ Auth::user()->name }} <span class="caret"></span>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{{action('HomeController@index')}}"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+            <a class="dropdown-item" href="{{action('UserProfileController@index')}}"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 <i class="fas fa-power-off"></i> {{ __('Logout') }}

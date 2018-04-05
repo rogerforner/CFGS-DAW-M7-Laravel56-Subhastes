@@ -179,7 +179,7 @@ class UserController extends Controller
     {
         // Obtenir l'usuari.
         $user = User::findOrFail($id);
-
+        dd($user);
         // No permetem esborrar l'usuari amb id 1 (administrador)
         if ($user->id === 1) {
             // back() crea una redirecció a la última localització de l'usuari
