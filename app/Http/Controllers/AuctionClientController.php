@@ -2,20 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Auction;
 use Illuminate\Http\Request;
 
 class AuctionClientController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-  
     /**
      * Display a listing of the resource.
      *
@@ -23,7 +14,9 @@ class AuctionClientController extends Controller
      */
     public function index()
     {
-        //
+        $auctions = Auction::all();
+
+        return view('index', compact('auctions'));
     }
 
     /**

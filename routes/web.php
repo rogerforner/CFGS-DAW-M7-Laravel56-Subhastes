@@ -3,9 +3,7 @@
 /*
 # Client (arrel)
 *******************************************************************************/
-Route::get('/', function () {
-    return view('index');
-});
+Route::resource('/', 'AuctionClientController', ['only' => ['index']]);
 
 /*
 # Auth
