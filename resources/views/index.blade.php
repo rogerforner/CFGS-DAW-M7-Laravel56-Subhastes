@@ -13,6 +13,8 @@
            href="#nav-actives" role="tab" aria-controls="actives" aria-expanded="true">In progress</a>
         <a class="nav-item nav-link" id="nav-finalitzades-tab" data-toggle="tab"
            href="#nav-finalitzades" role="tab" aria-controls="finalitzades" aria-expanded="false">Finished</a>
+         <span class="nav-item nav-link" id="nav-now-tab" data-toggle="tab"
+            href="" role="tab" aria-controls="now" aria-expanded="false">Now: {{ $now }}</span>
       </nav>
 
       <!-- Subhastes (contingut) -->

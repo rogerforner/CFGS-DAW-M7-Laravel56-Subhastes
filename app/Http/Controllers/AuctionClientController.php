@@ -18,7 +18,7 @@ class AuctionClientController extends Controller
         $activeAuctions = Auction::where('date_end', '>=', $now)->get();
         $finishedAuctions = Auction::where('date_end', '<', $now)->get();
 
-        return view('index', compact(['activeAuctions', 'finishedAuctions']));
+        return view('index', compact(['activeAuctions', 'finishedAuctions', 'now']));
     }
 
     /**
