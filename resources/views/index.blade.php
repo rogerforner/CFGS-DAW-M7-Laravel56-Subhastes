@@ -22,15 +22,15 @@
           <div class="row px-3 mt-3">
             <div class="col">
               <div class="card-deck">
-                @forelse ($auctions as $auction)
+                @forelse ($activeAuctions as $activeAuction)
                   <div class="card">
-                    <img class="card-img-top" src="{{ $auction->img }}" alt="{{ $auction->title }}">
+                    <img class="card-img-top" src="{{ $activeAuction->img }}" alt="{{ $activeAuction->title }}">
                     <div class="card-body">
-                      <h5 class="card-title">{{ $auction->title }}</h5>
-                      <p class="card-text">{{ $auction->description }}</p>
+                      <h5 class="card-title">{{ $activeAuction->title }}</h5>
+                      <p class="card-text">{{ $activeAuction->description }}</p>
                     </div>
                     <div class="card-footer">
-                      <small class="text-muted">Ending: {{ $auction->date_end }}</small>
+                      <small class="text-muted">Ending: {{ $activeAuction->date_end }}</small>
                     </div>
                   </div>
                 @empty
@@ -44,10 +44,22 @@
         <div class="tab-pane fade" id="nav-finalitzades" role="tabpanel" aria-labelledby="nav-finalitzades-tab" aria-expanded="false">
           <div class="row px-3 mt-3">
             <div class="col">
-              @forelse ($auctions as $auction)
-              @empty
-                <p>There are no finished auctions yet.</p>
-              @endforelse
+              <div class="card-deck">
+                @forelse ($finishedAuctions as $finishedAuction)
+                  <div class="card">
+                    <img class="card-img-top" src="{{ $finishedAuction->img }}" alt="{{ $finishedAuction->title }}">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ $finishedAuction->title }}</h5>
+                      <p class="card-text">{{ $finishedAuction->description }}</p>
+                    </div>
+                    <div class="card-footer">
+                      <small class="text-muted">Ending: {{ $finishedAuction->date_end }}</small>
+                    </div>
+                  </div>
+                @empty
+                  <p>There are no auctions yet.</p>
+                @endforelse
+              </div><!-- /.card-deck -->
             </div><!-- /.col -->
           </div><!-- /.tab-pane -->
         </div>
