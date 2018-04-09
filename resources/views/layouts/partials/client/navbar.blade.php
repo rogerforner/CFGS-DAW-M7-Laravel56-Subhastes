@@ -8,10 +8,10 @@
   <div class="collapse navbar-collapse" id="navbarTogglerClient">
     {{-- Menú Esquerra --}}
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Enllaç <span class="sr-only">(current)</span></a>
+      <li class="nav-item {{ Request::is('/') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('/') }}">Home {!! Request::is('/') ? '<span class="sr-only">(current)</span>' : '' !!}</a>
       </li>
-      <li class="nav-item dropdown">
+      {{-- <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#">Enllaç 1</a>
@@ -19,11 +19,11 @@
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Enllaç 3</a>
         </div>
-      </li>
+      </li> --}}
     </ul><!-- /navegació-esquerra -->
     {{-- Menú Dreta --}}
     <ul class="navbar-nav ml-auto">
-      <!-- Enllaç -->
+      {{-- <!-- Enllaç -->
       <li class="nav-item">
         <a class="nav-link" href="#">Enllaç</a>
       </li>
@@ -36,7 +36,7 @@
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Enllaç 3</a>
         </div>
-      </li>
+      </li> --}}
       <!-- Authentication Links -->
       @guest
         <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>

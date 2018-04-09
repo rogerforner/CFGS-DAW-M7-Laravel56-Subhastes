@@ -3,19 +3,16 @@
     <div class="row">
       <div class="col-lg" id="footer-navigation">
         <ul class="nav justify-content-left hidden-md-down">
-          <li class="nav-item active"><a class="nav-link" href="/">Inici</a></li>
-          <li class="nav-item "><a class="nav-link" href="/contactar">Contactar</a></li>
-          <li class="nav-item "><a class="nav-link" href="/legal">Avís legal</a></li>
+          <li class="nav-item active"><a class="nav-link" href="{{ url('/') }}">Home</a></li>
+          <li class="nav-item "><a class="nav-link" href="#">Legal</a></li>
         </ul>
         <ul class="nav justify-content-center hidden-xs-down hidden-lg-up">
-          <li class="nav-item active"><a class="nav-link" href="/">Inici</a></li>
-          <li class="nav-item "><a class="nav-link" href="/contactar">Contactar</a></li>
-          <li class="nav-item "><a class="nav-link" href="/legal">Avís legal</a></li>
+          <li class="nav-item active"><a class="nav-link" href="{{ url('/') }}">Home</a></li>
+          <li class="nav-item "><a class="nav-link" href="#">Legal</a></li>
         </ul>
         <ul class="nav flex-column hidden-sm-up text-center">
-          <li class="nav-item active"><a class="nav-link" href="/">Inici</a></li>
-          <li class="nav-item "><a class="nav-link" href="/contactar">Contactar</a></li>
-          <li class="nav-item "><a class="nav-link" href="/legal">Avís legal</a></li>
+          <li class="nav-item active"><a class="nav-link" href="{{ url('/') }}">Home</a></li>
+          <li class="nav-item "><a class="nav-link" href="#">Legal</a></li>
         </ul>
       </div><!-- /.col -->
     </div><!-- /.row -->
@@ -24,7 +21,7 @@
       <div class="col-lg" id="footer-social">
         <ul class="list-inline">
         <li class="list-inline-item">
-          <a title="Twtter" href="#"><i class="fab fa-twitter fa-2x"></i></a>
+          <a title="Twitter" href="#"><i class="fab fa-twitter fa-2x"></i></a>
         </li>
         <li class="list-inline-item">
           <a title="Facebook" href="#"><i class="fab fa-facebook fa-2x"></i></a>
