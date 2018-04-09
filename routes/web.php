@@ -3,7 +3,10 @@
 /*
 # Client (arrel)
 *******************************************************************************/
-Route::resource('/', 'AuctionClientController', ['only' => ['index']]);
+Route::group(['prefix'=>'/'], function () {
+    Route::resource('/', 'AuctionClientController', ['only' => ['index']]);
+    Route::resource('auctions-feed', 'AuctionJsonFeedController', ['only' => ['index']]);
+});
 
 /*
 # Auth

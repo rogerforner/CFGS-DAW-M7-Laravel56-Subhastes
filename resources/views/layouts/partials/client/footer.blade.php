@@ -26,6 +26,9 @@
         <li class="list-inline-item">
           <a title="Facebook" href="#"><i class="fab fa-facebook fa-2x"></i></a>
         </li>
+        <li class="list-inline-item">
+          <a title="JSON Feed" href="{{ url('auctions-feed') }}"><i class="fas fa-rss-square fa-2x"></i></a>
+        </li>
         </ul>
       </div><!-- /.col -->
       <div class="col-lg" id="copyright-owner">
