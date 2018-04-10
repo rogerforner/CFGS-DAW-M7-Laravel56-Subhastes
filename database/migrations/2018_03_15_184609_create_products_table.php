@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('characteristics');
             $table->string('image');
             $table->timestamps();
+            $table->boolean('active')->default(true);
         });
     }
 
