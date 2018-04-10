@@ -19,16 +19,16 @@
 
       {{-- Enllaç "Dropdown" (Subhastes) --}}
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAuctions" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-euro-sign"></i> Subhastes</a>
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAuctions" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-euro-sign"></i> Auctions</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownAuctions">
-          <a class="dropdown-item" href="#">Llistar</a>
-          <a class="dropdown-item" href="#">Crear</a>
+          <a class="dropdown-item" href="{{action('AuctionAdminController@index')}}">List auctions</a>
+          <a class="dropdown-item" href="{{action('AuctionAdminController@create')}}">Create auction</a>
         </div>
       </li>
 
       {{-- Enllaç "Dropdown" (Productes) --}}
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownProducts" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-cubes"></i> Productes</a>
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownProducts" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-cubes"></i> Products</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownProducts">
           <a class="dropdown-item" href="{{action('ProductController@index')}}">List products</a>
           <a class="dropdown-item" href="{{action('ProductController@create')}}">Create product</a>
@@ -39,8 +39,8 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCategories" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-tags"></i> Categories</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownCategories">
-          <a class="dropdown-item" href="{{action('CategoryController@index')}}">Llistar</a>
-          <a class="dropdown-item" href="{{action('CategoryController@create')}}">Crear</a>
+          <a class="dropdown-item" href="{{action('CategoryController@index')}}">List categories</a>
+          <a class="dropdown-item" href="{{action('CategoryController@create')}}">Create category</a>
         </div>
       </li>
     </ul>
