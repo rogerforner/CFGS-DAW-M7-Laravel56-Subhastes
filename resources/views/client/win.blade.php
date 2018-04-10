@@ -71,9 +71,8 @@
   <!-- Subhastes (navegació) -->
   <nav class="nav nav-tabs" id="nav-tab" role="tablist">
     <a class="nav-item nav-link active" id="nav-actives-tab" data-toggle="tab"
-       href="#nav-actives" role="tab" aria-controls="actives" aria-expanded="true">You'r active auctions</a>
-
-    <a class="nav-item nav-link" id="nav-finalitzades-tab" data-toggle="tab" onclick="t();" href="#nav-finalitzades" role="tab" aria-controls="finalitzades" aria-expanded="false">You'r winning auctions</a>
+       href="#nav-actives" role="tab" aria-controls="actives" aria-expanded="true">You'r winning auctions</a>
+    <a class="nav-item nav-link btn btn-primary" href="{{action('UserProfileController@index')}}">Go back</a>   
   </nav>
 
   <!-- Subhastes (contingut) -->
@@ -84,10 +83,10 @@
         <div class="col">
           <div class="card-deck">
             @php
-              $i=0;
+              $i1=0;
             @endphp
-            @forelse ($win as $auction)
-              @if ($i<4)
+            @forelse ($win1 as $auction)
+              @if ($i1<4)
                 <div class="col-3">
                 <div class="card">
                   <img class="card-img-top" src="{{ $auction->img }}" alt="{{ $auction->title }}">
@@ -115,10 +114,10 @@
             </div>
           @endif
           @php
-            $i++;
+            $i1++;
           @endphp
           @empty
-            <p>You don't have any active auctions at this moment. Go to <a href="{{action('AuctionClientController@index')}}">auctions.</a></p>
+            <p>You don't have any winned auction at this moment. Go to <a href="{{action('AuctionClientController@index')}}">auctions.</a></p>
           @endforelse
           </div><!-- /.card-deck -->
         </div><!-- /.col -->
@@ -126,65 +125,11 @@
       </div><!-- /.tab-pane -->
       <div class="row">
             <div class="mt-4 mx-auto">
-              {{ $win->links() }}
+              {{ $win1->links() }}
             </div><!-- /.col -->
           </div><!-- /.row -->
     </div>
-    <!-- Finalitzades -->
-    <div class="tab-pane fade" id="nav-finalitzades" role="tabpanel" aria-labelledby="nav-finalitzades-tab" aria-expanded="false">
-      <div class="row pl-3 mt-3" style="margin-left:0px !important;margin-right:0px !important;">
-        <div class="col">
-          <div class="card-deck">
-              @php
-                $i1=0;
-              @endphp
-              @forelse ($win1 as $auction)
-                @if ($i1<4)
-                  <div class="col-3">
-                  <div class="card">
-                    <img class="card-img-top" src="{{ $auction->img }}" alt="{{ $auction->title }}">
-                    <div class="card-body">
-                      <h5 class="card-title">{{ $auction->title }}</h5>
-                      <p class="card-text">{{ $auction->description }}</p>
-                    </div>
-                    <div class="card-footer">
-                      <small class="text-muted">Ending: {{ $auction->date_end }}</small>
-                    </div>
-                  </div>
-                </div>
-              @else
-                <div class="col-3 mt-4">
-                <div class="card">
-                  <img class="card-img-top" src="{{ $auction->img }}" alt="{{ $auction->title }}">
-                  <div class="card-body">
-                    <h5 class="card-title">{{ $auction->title }}</h5>
-                    <p class="card-text">{{ $auction->description }}</p>
-                  </div>
-                  <div class="card-footer">
-                    <small class="text-muted">Ending: {{ $auction->date_end }}</small>
-                  </div>
-                </div>
-              </div>
-            @endif
-            @php
-              $i1++;
-            @endphp
-            @empty
-              <p>You don't have any won auction at this moment. Go to <a href="{{action('AuctionClientController@index')}}">auctions.</a></p>
-            @endforelse
-          </div><!-- /.card-deck -->
-        </div><!-- /.col -->
 
-      </div ><!-- /.tab-pane -->
-      <div class="row">
-            <div class="mt-4 mx-auto">
-              <a href="{{route('index1')}}" class="btn btn-primary" name="button">See all you'r won auctions</a>
-            </div><!-- /.col -->
-          </div><!-- /.row -->
-      </div>
-
-    </div>
-  </div>
 </div><!-- /.col -->
 </div><!-- /.row -->
 </div><!-- /.container -->

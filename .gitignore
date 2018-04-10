@@ -1,4 +1,5 @@
 vendor/
+!vendor/laravel/framework/src/Illuminate/Support/Collection.php
 node_modules/
 npm-debug.log
 
