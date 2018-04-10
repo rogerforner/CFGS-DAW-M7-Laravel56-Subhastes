@@ -68,4 +68,10 @@
   </div><!-- /.row -->
 </div><!-- /.container -->
 
+@section('scripts')
+<script type="text/javascript">
+  
+</script>
+@endsection
+
 @endsection

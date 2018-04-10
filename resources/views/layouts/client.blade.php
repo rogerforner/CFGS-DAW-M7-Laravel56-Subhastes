@@ -16,7 +16,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-    
+
     <!-- JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   </head>
@@ -30,15 +30,15 @@
     </main><!-- /.container -->
 
     <!-- Footer -->
-    @include('layouts.partials.client.footer')
+    @include('layouts.partials.app.footer')
 
     <!-- JQuery -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <!-- JavaScript -->
     <script src="{{ asset('js/app.js') }}"></script>
 
-    <!-- JQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Scripts -->
+    @yield('scripts')
   </body>
 </html>
