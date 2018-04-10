@@ -54,6 +54,13 @@ Un cop instal·lades les dependències en hem de situar en el directori del proj
 $ cp .env.example .env
 ```
 
+### Collection.php
+Moure el fitxer _Collection.php_ a la següent ruta del /vendor.
+
+```
+$ cp Collection.php vendor/laravel/framework/src/Illuminate/Support/
+```
+
 ### Key
 
 Per poder executar sense problemes l'aplicació web hem de generar una _key_. En farem servir la següent comanda artisan.
