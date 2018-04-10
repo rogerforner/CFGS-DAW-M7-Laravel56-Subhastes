@@ -39,7 +39,7 @@ _És necessari tenir instal·lat [git](https://git-scm.com/)._
 Un cop descarregat hem d'instal·lar les dependències mitjançant **composer** i, també, **npm**.
 
 ```
-$ composer install $$ npm install
+$ composer install && npm install
 ```
 
 _És necessari tenir instal·lat [composer](https://getcomposer.org/) i [npm](https://www.npmjs.com/get-npm)._
@@ -78,6 +78,18 @@ DB_PASSWORD=root
 ```
 
 _Depenent del projecte, es poden emplenar la resta de paràmetres de configuració, inclòs crear-ne de nous._
+
+Un cop configurada la base de dades hem de dur endavant les migracions. Amb aquestes es crearan les taules.
+
+```
+$ php artisan migrate
+```
+
+En el nostre cas hem creat uns usuaris d'exemple, per tal de poder-los inserir a la base de dades hem de dur endavant els "seeders".
+
+```
+$ php artisan migrate:refresh --seed
+```
 
 ## Assets
 

@@ -1,10 +1,11 @@
 <?php
 
 /*
-# Pàgina d'inici
+# Client (arrel)
 *******************************************************************************/
-Route::get('/', function () {
-    return view('index');
+Route::group(['prefix'=>'/'], function () {
+    Route::resource('/', 'AuctionClientController', ['only' => ['index']]);
+    Route::resource('auctions-feed', 'AuctionJsonFeedController', ['only' => ['index']]);
 });
 
 /*
@@ -27,12 +28,16 @@ Route::group(['prefix'=>'admin'], function () {
 # Client
 *******************************************************************************/
 Route::group(['prefix'=>'client'], function () {
+    Route::resource('ProfileUsers', 'UserProfileController');
 });
 
+/*
+# PayPal
+*******************************************************************************/
 //---------------------------
 // route for view/blade file
 //---------------------------
-Route::get('addPayment','PaymentController@addPayment')->name('addPayment');
+Route::get('addPayment', 'PaymentController@addPayment')->name('addPayment');
 
 //-------------------------
 // route for post request
@@ -42,6 +47,6 @@ Route::post('paypal', 'PaymentController@postPaymentWithpaypal')->name('paypal')
 //---------------------------------
 // route for check status responce
 //---------------------------------
-Route::get('paypal','PaymentController@getPaymentStatus')->name('status');
+Route::get('paypal', 'PaymentController@getPaymentStatus')->name('status');
 
-Route::get('paypalerror','PaymentController@error')->name('paypalerror');
+Route::get('paypalerror', 'PaymentController@error')->name('paypalerror');

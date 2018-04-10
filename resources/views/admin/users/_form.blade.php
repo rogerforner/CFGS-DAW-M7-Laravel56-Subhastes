@@ -30,11 +30,23 @@
           @else
             {{Form::open(['url' => '/admin/users'])}}
           @endif
-            {{-- Usuari --}}
+            {{-- Nickname --}}
+            <div class="form-group">
+              <label for="userName">Nikname</label>
+              <input type="text" name="name" value="{{ $user->nickname or old('nickname') }}" class="form-control" id="userNick" aria-describedby="nameHelp" required>
+              <small id="nameHelp" class="form-text text-muted">Nick in page.</small>
+            </div>
+            {{-- Name --}}
             <div class="form-group">
               <label for="userName">Name</label>
               <input type="text" name="name" value="{{ $user->name or old('name') }}" class="form-control" id="userName" aria-describedby="nameHelp" required>
-              <small id="nameHelp" class="form-text text-muted">All name.</small>
+              <small id="nameHelp" class="form-text text-muted">Name for the future.</small>
+            </div>
+            {{-- Surname --}}
+            <div class="form-group">
+              <label for="userName">Surname</label>
+              <input type="text" name="name" value="{{ $user->surname or old('surname') }}" class="form-control" id="userSurname" aria-describedby="nameHelp" required>
+              <small id="nameHelp" class="form-text text-muted">Surname for the future.</small>
             </div>
             {{-- Email --}}
             <div class="form-group">

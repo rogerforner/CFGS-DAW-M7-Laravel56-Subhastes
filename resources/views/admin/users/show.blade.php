@@ -8,10 +8,17 @@
       <div class="card shadow-2">
         <div class="card-body">
           <h5 class="card-title">User info</h5>
+          <hr>
           {{-- Dades --}}
           <dl class="row">
+            <dt class="col-sm-2">Nickname</dt>
+            <dd class="col-sm-10">{{ $user->nickname }}</dd>
+
             <dt class="col-sm-2">Name</dt>
             <dd class="col-sm-10">{{ $user->name }}</dd>
+
+            <dt class="col-sm-2">Surname</dt>
+            <dd class="col-sm-10">{{ $user->surname }}</dd>
 
             <dt class="col-sm-2">E-mail</dt>
             <dd class="col-sm-10">{{ $user->email }}</dd>

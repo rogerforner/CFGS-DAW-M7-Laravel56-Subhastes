@@ -35,7 +35,7 @@
               <thead class="bg-cream text-white">
                 <tr>
                   <th scope="col">ID</th>
-                  <th scope="col">Name</th>
+                  <th scope="col">Nickname</th>
                   <th scope="col">E-mail</th>
                   <th scope="col">Role</th>
                   <th scope="col">Created</th>
@@ -47,7 +47,7 @@
                 @forelse ($users as $user)
                   <tr>
                     <td class="align-middle">{{ $user->id }}</td>
-                    <td class="align-middle">{{ $user->name }}</td>
+                    <td class="align-middle">{{ $user->nickname }}</td>
                     <td class="align-middle">{{ $user->email }}</td>
                     @php
                       $obtainRoleName = $user->roles()->pluck('name')->implode(' ');
