@@ -189,6 +189,35 @@
 </div><!-- /.row -->
 </div><!-- /.container -->
 <script type="text/javascript">
+function load() {
+  var x=document.URL;
+
+  if (x.split("#").pop()=="nav-finalitzades") {
+
+    var l1=document.getElementById("nav-finalitzades-tab");
+    var l2=document.getElementById("nav-actives-tab");
+    l1.classList.add("active");
+    l1.classList.add("show");
+    l1.setAttribute("aria-selected", true);
+    l2.classList.remove('active');
+    l2.classList.remove('show');
+    l2.setAttribute("aria-selected", false);
+  }
+}
+  function t() {
+    var x=document.URL;
+
+
+    if (x.split("?").pop()=="page=1" ||x.split("?").pop()=="") {
+
+    }else {
+      //var l1=document.getElementById("nav-actives-tab"); //
+      //l1.classList.add("active show")
+      var ruta = x.substring(0, x.lastIndexOf('?'));
+      window.location.replace(ruta+'#nav-finalitzades');
+    }
+  }
+load();
 
 
 </script>
