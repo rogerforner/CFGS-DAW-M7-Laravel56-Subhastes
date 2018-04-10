@@ -22,6 +22,7 @@ class CreateAuctionsTable extends Migration
             $table->integer('stock_id')->unsigned();
             $table->timestamps();
             $table->foreign('stock_id')->references('id')->on('stock');
+            $table->boolean('active')->default(true);
         });
     }
 

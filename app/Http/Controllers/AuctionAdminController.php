@@ -27,7 +27,7 @@ class AuctionAdminController extends Controller
      */
     public function index()
     {
-        $auctions = Auction::paginate(6);
+        $auctions = Auction::where('active',true)->paginate(6);
         foreach($auctions as $auction){
             $auction->product = $auction->getProduct($auction->stock_id);
             if($auction->getWinner($auction->id) != NULL){
@@ -107,7 +107,7 @@ class AuctionAdminController extends Controller
             'available' => 1
         ]);
         $stocks = Stock::where('available','1')->get();
-        
+
         return view('admin.auctions.partials.form')->with(['auction' => $auction, 'stocks' => $stocks]);
     }
 
@@ -141,7 +141,9 @@ class AuctionAdminController extends Controller
      */
     public function destroy($id)
     {
-        Auction::destroy($id);
+        Auction::where('id',$id)->update([
+            'active' => false
+        ]);
         session()->flash('success','Auction succesfully deleted!');
         return redirect()->route('auction.index');
     }

@@ -27,7 +27,7 @@ class ProductController extends Controller
     public function index()
     {
         $cat_names = [];
-        $products = Product::paginate(6);
+        $products = Product::where('active',1)->paginate(6);
         foreach($products as $prod){
             $names = $prod->getCategories($prod->id);
             $cat_names[$prod->id] = $names;
@@ -140,7 +140,9 @@ class ProductController extends Controller
     public function destroy($id)
     {
         DB::table('product_has_category')->where('product_id','=',$id)->delete();
-        Product::destroy($id);
+        Product::where('id',$id)->update([
+            'active' => false
+        ]);
         session()->flash('success','Product succesfully deleted!');
         return redirect()->route('products.index');
     }
