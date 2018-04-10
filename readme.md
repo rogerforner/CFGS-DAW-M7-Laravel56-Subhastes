@@ -39,7 +39,7 @@ _És necessari tenir instal·lat [git](https://git-scm.com/)._
 Un cop descarregat hem d'instal·lar les dependències mitjançant **composer** i, també, **npm**.
 
 ```
-$ composer install $$ npm install
+$ composer install && npm install
 ```
 
 _És necessari tenir instal·lat [composer](https://getcomposer.org/) i [npm](https://www.npmjs.com/get-npm)._
