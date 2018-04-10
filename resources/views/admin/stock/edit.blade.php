@@ -1,6 +1,6 @@
 @extends('layouts.admin')
-@section('title', 'Edit a category.')
-@section('description', 'Edit a new category.')
+@section('title', 'Modify the stock.')
+@section('description', 'Modify the stock.')
 @section('content')
 
   <div class="container my-5">
@@ -8,7 +8,7 @@
       <div class="col">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Edit category</h5>
+            <h5 class="card-title">Modify the stock</h5>
 
             {{-- Errors --}}
             @if ($errors->any())
@@ -22,15 +22,15 @@
             @endif
 
             {{-- Formulari --}}
-            {{ Form::model($category, ['action' => ['CategoryController@update', $category->id], 'method' => 'patch']) }}
-              @include('admin.categories.partials.form', [
-                'submitButton' => 'Update Category'
+            {{ Form::model($stock, ['action' => ['StockController@update', $stock->id], 'method' => 'patch']) }}
+              @include('admin.stock.partials.form', [
+                'submitButton' => 'Update Stock'
               ])
             {{ Form::close() }}
 
             {{-- Tornar enrere --}}
             <p class="text-right">
-              <a href="{{ action('CategoryController@index') }}" class="card-link">
+              <a href="{{ action('StockController@index') }}" class="card-link">
                 <i class="far fa-arrow-alt-circle-left"></i> Go back
               </a>
             </p>

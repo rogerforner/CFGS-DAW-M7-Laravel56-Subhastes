@@ -10055,6 +10055,10 @@ body {
   height: 100%;
 }
 
+main#app {
+  min-height: calc(100vh - 265.42px);
+}
+
 main#client {
   min-height: calc(100vh - 265.42px);
 }

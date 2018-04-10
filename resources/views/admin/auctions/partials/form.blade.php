@@ -6,56 +6,58 @@
 <div class="row my-3 mx-0">
     <div class="col-10 col-sm-10 col-md-6 mx-auto">
         <div class="card">
-            <h5 class="card-header">Create new product</h5>
-            <div class="card-body">
-            @if($product->exists)
-                {{Form::open(['route' => ['products.update',$product->id], 'files' => true, 'method' => 'PUT'])}}
-            @else
-                {{Form::open(['route' => ['products.index'],'files' => true])}}   
-            @endif
+        @if($auction->exists)
+            <h5 class="card-header">Edit auction</h5>
+                <div class="card-body">
+                    {{Form::open(['route' => ['auctions.update',$auction->id], 'files' => true, 'method' => 'PUT'])}}
+        @else
+            <h5 class="card-header">Create new auction</h5>
+                <div class="card-body">
+                    {{Form::open(['route' => ['auctions.index'],'files' => true])}}   
+        @endif
                 <div class="form-group">
-                    {{Form::label('name', 'Name')}}
-                    {{Form::text('name',$product->name,['class' => 'form-control'])}}
+                    {{Form::label('title', 'Title')}}
+                    {{Form::text('title',$auction->title,['class' => 'form-control','required'=>'required'])}}
                 </div>
                 <div class="form-group">
                     {{Form::label('description', 'Description')}}
-                    {{Form::textarea('description',$product->description,['class' => 'form-control'])}}
+                    {{Form::textarea('description',$auction->description,['class' => 'form-control','required'=>'required'])}}
                 </div>
                 <div class="form-group">
-                    {{Form::label('characteristics', 'Characteristics')}}
-                    {{Form::textarea('characteristics',$product->characteristics,['class' => 'form-control'])}}
+                    {{Form::label('date_start', 'Date start')}}
+                    <input class="form-control" type="datetime-local" name="date_start" min="{{date("Y-m-d\TH:i")}}" value="{{date('Y-m-d\TH:i:s',strtotime($auction->date_start))}}">
                 </div>
                 <div class="form-group">
-                    {{Form::label('image', 'Image')}}
-                    {{Form::file('image',['class' => 'form-control'])}}
+                    {{Form::label('date_end', 'Date end')}}
+                    <input class="form-control" type="datetime-local" name="date_end" min="{{date("Y-m-d\TH:i")}}" value="{{date('Y-m-d\TH:i:s',strtotime($auction->date_end))}}">
                 </div>
                 <div class="form-group">
-                    {{Form::label('categories[]', 'Categories')}}
+                    {{Form::label('stock_id', 'Product to auction')}}
                     <input class="form-control mb-2" id="myInput" type="text" placeholder="Search..">
                         <div class="table-responsive">
                         <table class="table table-striped table-hover">
                             <thead class="thead-dark">
                                 <tr>
                                     <th class="chck">#</th>
-                                    <th class="cat-name">Category</th>
-                                    <th class="cat-desc">Description</th>
+                                    <th class="cat-name">Name</th>
+                                    <th class="cat-desc">Reference</th>
                                 </tr>
                             </thead>
                             <tbody id="myTable">
-                                @foreach ($categories as $category)
+                                @foreach ($stocks as $stock)
                                     <tr>
                                         <td class="chck">
-                                            @if($product->exists && in_array($category->id, $old_cats))
-                                                {{Form::checkbox('categories[]',$category->id,true)}}
+                                            @if($auction->exists && $stock->id == $auction->stock_id)
+                                                {{Form::radio('stock_id',$stock->id,['checked'=>'checked'])}}
                                             @else
-                                                {{Form::checkbox('categories[]',$category->id)}}
+                                                {{Form::radio('stock_id',$stock->id)}}
                                             @endif
                                         </td>
                                         <td class="cat-name">
-                                            {{$category->name}}
+                                            {{$stock->product($stock->product_id)->name}}
                                         </td>
                                         <td class="cat-desc">
-                                            {{$category->description}}
+                                            {{$stock->reference}}
                                         </td>
                                     </tr>
                                 @endforeach
@@ -63,7 +65,11 @@
                         </table>
                     </div>
                 </div>
-                {{Form::submit('Create product',['class' => 'btn btn-primary'])}}
+                @if($auction->exists)
+                    {{Form::submit('Edit auction',['class' => 'btn btn-primary'])}}
+                @else
+                   {{Form::submit('Create auction',['class' => 'btn btn-primary'])}}
+                @endif
                 {{Form::close()}}
             </div>
         </div><!-- /.card -->

@@ -19,19 +19,28 @@
 
       {{-- Enllaç "Dropdown" (Subhastes) --}}
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAuctions" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-euro-sign"></i> Subhastes</a>
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAuctions" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-euro-sign"></i> Auctions</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownAuctions">
-          <a class="dropdown-item" href="#">Llistar</a>
-          <a class="dropdown-item" href="#">Crear</a>
+          <a class="dropdown-item" href="{{action('AuctionAdminController@index')}}">List auctions</a>
+          <a class="dropdown-item" href="{{action('AuctionAdminController@create')}}">Create auction</a>
         </div>
       </li>
 
       {{-- Enllaç "Dropdown" (Productes) --}}
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownProducts" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-cubes"></i> Productes</a>
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownProducts" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-cubes"></i> Products</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownProducts">
           <a class="dropdown-item" href="{{action('ProductController@index')}}">List products</a>
           <a class="dropdown-item" href="{{action('ProductController@create')}}">Create product</a>
+        </div>
+      </li>
+
+      {{-- Enllaç "Dropdown" (Stock) --}}
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownStock" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-people-carry"></i> Stock</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownStock">
+          <a class="dropdown-item" href="{{action('StockController@index')}}">See stock</a>
+          <a class="dropdown-item" href="{{action('StockController@create')}}">Add stock</a>
         </div>
       </li>
 
@@ -39,8 +48,8 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCategories" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-tags"></i> Categories</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownCategories">
-          <a class="dropdown-item" href="{{action('CategoryController@index')}}">Llistar</a>
-          <a class="dropdown-item" href="{{action('CategoryController@create')}}">Crear</a>
+          <a class="dropdown-item" href="{{action('CategoryController@index')}}">List categories</a>
+          <a class="dropdown-item" href="{{action('CategoryController@create')}}">Create category</a>
         </div>
       </li>
     </ul>
@@ -56,7 +65,8 @@
               <i class="fas fa-user-circle"></i> {{ Auth::user()->name }} <span class="caret"></span>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Profile</a>
+            <a class="dropdown-item" href="{{action('HomeController@index')}}"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+            <a class="dropdown-item" href="{{action('UserProfileController@index')}}"><i class="fas fa-user-secret"></i> Profile</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 <i class="fas fa-power-off"></i> {{ __('Logout') }}

@@ -39,7 +39,7 @@ _És necessari tenir instal·lat [git](https://git-scm.com/)._
 Un cop descarregat hem d'instal·lar les dependències mitjançant **composer** i, també, **npm**.
 
 ```
-$ composer install $$ npm install
+$ composer install && npm install
 ```
 
 _És necessari tenir instal·lat [composer](https://getcomposer.org/) i [npm](https://www.npmjs.com/get-npm)._
@@ -52,6 +52,13 @@ Un cop instal·lades les dependències en hem de situar en el directori del proj
 
 ```
 $ cp .env.example .env
+```
+
+### Collection.php
+Moure el fitxer _Collection.php_ a la següent ruta del /vendor.
+
+```
+$ cp Collection.php vendor/laravel/framework/src/Illuminate/Support/
 ```
 
 ### Key

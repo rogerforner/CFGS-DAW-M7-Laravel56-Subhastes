@@ -27,7 +27,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = USER::all();
+        $users = User::where('active',1)->get();
 
         return view('admin.users.index', ['users' => $users]);
     }
@@ -179,7 +179,6 @@ class UserController extends Controller
     {
         // Obtenir l'usuari.
         $user = User::findOrFail($id);
-        dd($user);
         // No permetem esborrar l'usuari amb id 1 (administrador)
         if ($user->id === 1) {
             // back() crea una redirecció a la última localització de l'usuari
@@ -188,7 +187,7 @@ class UserController extends Controller
             return back()->with($missatge);
         } else {
             // Eliminar l'usuari.
-            $user->delete();
+            $user->active = 0;
 
             // Vista on es llisten els usuaris.
             $missatge=session()->flash('success', 'Usuari esborrat!');

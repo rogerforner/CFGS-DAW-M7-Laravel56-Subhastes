@@ -20,6 +20,7 @@ Route::group(['prefix'=>'admin'], function () {
     Route::resource('/', 'HomeController', ['only' => ['index']]);
     Route::resource('categories', 'CategoryController');
     Route::resource('products', 'ProductController');
+    Route::resource('stock', 'StockController');
     Route::resource('auctions', 'AuctionAdminController');
     Route::resource('users', 'UserController');
 });

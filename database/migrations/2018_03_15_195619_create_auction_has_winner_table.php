@@ -15,7 +15,7 @@ class CreateAuctionHasWinnerTable extends Migration
     {
         Schema::create('auction_has_winner', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('auction_id')->unsigned();
+            $table->integer('auction_id')->unsigned()->unique();
             $table->integer('bidding_id')->unsigned()->nullable(); 
             $table->timestamps();
             $table->foreign('auction_id')->references('id')->on('auctions');
