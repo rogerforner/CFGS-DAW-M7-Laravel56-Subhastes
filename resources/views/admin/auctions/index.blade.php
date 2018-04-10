@@ -48,7 +48,7 @@
                   <tr>
                     <td class="align-middle">{{ $auction->id }}</td>
                     <td class="align-middle">{{ $auction->title }}</td>
-                    <td class="align-middle">{{ $auction->stock_id }}</td>
+                    <td class="align-middle">{{ $auction->product->name }}</td>
                     <td class="align-middle">{{ $auction->date_start}}</td>
                     <td class="align-middle">{{ $auction->date_end }}</td>
                     <td class="align-middle">

@@ -26,7 +26,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Tancar</button>
-        <form action="{{ action('ProductController@destroy', ['id' => $id]) }}" method="post">
+        <form action="{{ action('AuctionAdminController@destroy', ['id' => $id]) }}" method="post">
           {{ method_field('delete') }}
           {{ csrf_field() }}
           <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Esborrar</button>
