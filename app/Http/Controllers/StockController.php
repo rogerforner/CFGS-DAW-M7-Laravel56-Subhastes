@@ -2,10 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+use App\Stock;
+use App\Product;
 use Illuminate\Http\Request;
 
 class StockController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +26,12 @@ class StockController extends Controller
      */
     public function index()
     {
-        //
+        $stocks = Stock::all();
+        foreach($stocks as $stock){
+            $stock->product = $stock->product($stock->product_id);
+        }
+
+        return view('admin.stock.index', compact('stocks'));
     }
 
     /**
@@ -45,7 +63,10 @@ class StockController extends Controller
      */
     public function show($id)
     {
-        //
+        $stock = Stock::findOrFail($id);
+        $product = Product::findOrFail($stock->product_id);
+
+        return view('admin.stock.show', compact(['stock', 'product']));
     }
 
     /**
@@ -56,7 +77,9 @@ class StockController extends Controller
      */
     public function edit($id)
     {
-        //
+        $stock = Stock::findOrFail($id);
+
+        return view('admin.stock.edit', compact('stock'));
     }
 
     /**
@@ -68,7 +91,20 @@ class StockController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Obtenir l'stock.
+        $stock = Stock::findOrFail($id);
+
+        // Validar dades obtingudes del formulari.
+        $data = $request->validate([
+            'name'        => 'required|string|max:255',
+            'description' => 'max:255',
+        ]);
+
+        // Actualitzar l'stock (la validació ha sortit bé).
+        $stock->update($data);
+
+        // Vista amb el llistat de categories.
+        return redirect()->action('CategoryController@index');
     }
 
     /**

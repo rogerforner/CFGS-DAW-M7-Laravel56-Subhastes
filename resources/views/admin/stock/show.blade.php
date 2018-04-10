@@ -1,31 +1,34 @@
 @extends('layouts.admin')
-@section('title', $category->name.' info.')
-@section('description', 'Information of the categories.')
+@section('title', $product->name.' info.')
+@section('description', 'Information of the stock.')
 @section('content')
 <div class="container my-5">
   <div class="row">
     <div class="col">
       <div class="card shadow-2">
         <div class="card-body">
-          <h5 class="card-title">Category info.</h5>
+          <h5 class="card-title">Stock info.</h5>
           {{-- Informació --}}
           <dl class="row">
             <dt class="col-sm-2">Name</dt>
-            <dd class="col-sm-10">{{ $category->name }}</dd>
+            <dd class="col-sm-10">{{ $product->name }}</dd>
+
+            <dt class="col-sm-2">Available</dt>
+            <dd class="col-sm-10">{{ $stock->available }}</dd>
 
             <dt class="col-sm-2">Description</dt>
-            <dd class="col-sm-10">{{ $category->description }}</dd>
+            <dd class="col-sm-10">{{ $stock->reference }}</dd>
 
             <dt class="col-sm-2">Created at</dt>
-            <dd class="col-sm-10">{{ $category->created_at }}</dd>
+            <dd class="col-sm-10">{{ $stock->created_at }}</dd>
 
             <dt class="col-sm-2">Updated at</dt>
-            <dd class="col-sm-10">{{ $category->updated_at }}</dd>
+            <dd class="col-sm-10">{{ $stock->updated_at }}</dd>
           </dl>
 
           {{-- Tornar enrere --}}
           <p class="text-right">
-            <a href="{{ action('CategoryController@index') }}" class="card-link">
+            <a href="{{ action('StockController@index') }}" class="card-link">
               <i class="far fa-arrow-alt-circle-left"></i> Go back
             </a>
           </p>
