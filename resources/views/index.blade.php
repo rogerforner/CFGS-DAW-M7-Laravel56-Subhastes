@@ -1,4 +1,4 @@
-@extends('layouts.client')
+@extends('layouts.app')
 @section('title', 'Inici')
 @section('description', 'Pàgina d\'inici')
 @section('content')
