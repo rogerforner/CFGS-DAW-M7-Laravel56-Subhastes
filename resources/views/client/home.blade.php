@@ -73,7 +73,7 @@
     <a class="nav-item nav-link active" id="nav-actives-tab" data-toggle="tab"
        href="#nav-actives" role="tab" aria-controls="actives" aria-expanded="true">You'r active auctions</a>
 
-    <a class="nav-item nav-link" id="nav-finalitzades-tab" data-toggle="tab" onclick="t();" href="#nav-finalitzades" role="tab" aria-controls="finalitzades" aria-expanded="false">You'r winning auctions</a>
+    <a class="nav-item nav-link" id="nav-finalitzades-tab" data-toggle="tab" onclick="t();" href="#nav-finalitzades" role="tab" aria-controls="finalitzades" aria-expanded="false">You'r won auctions</a>
   </nav>
 
   <!-- Subhastes (contingut) -->

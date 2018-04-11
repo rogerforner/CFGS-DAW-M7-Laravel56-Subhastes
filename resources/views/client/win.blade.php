@@ -71,7 +71,7 @@
   <!-- Subhastes (navegació) -->
   <nav class="nav nav-tabs" id="nav-tab" role="tablist">
     <a class="nav-item nav-link active" id="nav-actives-tab" data-toggle="tab"
-       href="#nav-actives" role="tab" aria-controls="actives" aria-expanded="true">You'r winning auctions</a>
+       href="#nav-actives" role="tab" aria-controls="actives" aria-expanded="true">You'r won auctions</a>
     <a class="nav-item nav-link btn btn-primary" href="{{action('UserProfileController@index')}}">Go back</a>
   </nav>
 
