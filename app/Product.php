@@ -34,11 +34,17 @@ class Product extends Model
         return $cat_names;
     }
 
+    /*
+    # Stock
+    ***************************************************************************/
+    /*
+    ## Crear
+    ***************************************************************************/
     public function createStock($productId)
     {
         // Crear referència de forma automàtica.
         do {
-            $reference = str_random(12);
+            $reference = str_random(24);
         } while (Stock::where("reference", "=", $reference)->first() instanceof Stock);
 
         // Crear un stock per al producte afegit. Aquest serà igual a 0 ja que
@@ -51,4 +57,8 @@ class Product extends Model
         // 'stock'      => $data[''], // Default 0
       ]);
     }
+
+    /*
+    ## Eliminar
+    ***************************************************************************/
 }

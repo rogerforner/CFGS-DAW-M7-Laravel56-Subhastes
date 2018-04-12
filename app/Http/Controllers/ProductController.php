@@ -71,6 +71,7 @@ class ProductController extends Controller
 
         // Registrar stock del producte automàticament.
         // Per defecte stock = 0;
+        // Mirar app\Product.php, funció createStock($productId).
         $product->createStock($product->id);
 
         session()->flash('success', 'Product created succesfully!');

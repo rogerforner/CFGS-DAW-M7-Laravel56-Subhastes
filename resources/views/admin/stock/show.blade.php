@@ -13,11 +13,14 @@
             <dt class="col-sm-2">Name</dt>
             <dd class="col-sm-10">{{ $product->name }}</dd>
 
+            <dt class="col-sm-2">Stock</dt>
+            <dd class="col-sm-10">{{ $stock->stock }}</dd>
+
             <dt class="col-sm-2">Available</dt>
-            <dd class="col-sm-10">{{ $stock->available }}</dd>
+            <dd class="col-sm-10">{{ $stock->available == 0 ? "No stock" : "Available" }}</dd>
 
             <dt class="col-sm-2">Description</dt>
-            <dd class="col-sm-10">{{ $stock->reference }}</dd>
+            <dd class="col-sm-10">{{ $product->description }}</dd>
 
             <dt class="col-sm-2">Created at</dt>
             <dd class="col-sm-10">{{ $stock->created_at }}</dd>
