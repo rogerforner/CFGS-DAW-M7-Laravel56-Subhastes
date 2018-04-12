@@ -149,6 +149,11 @@ class ProductController extends Controller
         Product::where('id', $id)->update([
             'active' => false
         ]);
+
+        // Eliminar stock del producte automàticament.
+        // Mirar app\Product.php, funció destroyStock($productId).
+        Product::destroyStock($id);
+
         session()->flash('success', 'Product succesfully deleted!');
         return redirect()->route('products.index');
     }

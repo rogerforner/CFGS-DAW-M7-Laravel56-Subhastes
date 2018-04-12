@@ -61,4 +61,12 @@ class Product extends Model
     /*
     ## Eliminar
     ***************************************************************************/
+    public static function destroyStock($productId)
+    {
+        // Obtenir l'stock relacionat amb el producte per eliminar-lo.
+        $stock = Stock::where('product_id', $productId)->firstOrFail();
+
+        // Eliminar l'stock.
+        $stock->delete();
+    }
 }
