@@ -27,7 +27,7 @@ class StockController extends Controller
     public function index()
     {
         $stocks = Stock::all();
-        foreach($stocks as $stock){
+        foreach ($stocks as $stock) {
             $stock->product = $stock->product($stock->product_id);
         }
 
@@ -41,7 +41,14 @@ class StockController extends Controller
      */
     public function create()
     {
-        //
+        // L'stock es crea de forma automàtica quan es crea un producte, a través
+        // de app\Product.php, funció createStock($productId).
+
+        // Quan es crea un producte es genera un stock amb valors:
+        // - product_id: id del producte passat per paràmetre.
+        // - reference: generada automàticament, str_random(24).
+        // - available: per defecte "false".
+        // - stock: per defecte 0.
     }
 
     /**
@@ -78,8 +85,9 @@ class StockController extends Controller
     public function edit($id)
     {
         $stock = Stock::findOrFail($id);
+        $product = Product::findOrFail($stock->product_id);
 
-        return view('admin.stock.edit', compact('stock'));
+        return view('admin.stock.edit', compact(['stock', 'product']));
     }
 
     /**
@@ -96,15 +104,24 @@ class StockController extends Controller
 
         // Validar dades obtingudes del formulari.
         $data = $request->validate([
-            'name'        => 'required|string|max:255',
-            'description' => 'max:255',
+            'stock' => 'required|integer',
         ]);
+
+        // Si l'stock dels productes és diferent a 0 vol dir que hi ha existències.
+        // En cas contrari, que no n'hi ha.
+        if ($data['stock'] >= 1) {
+            $data['available'] = true;
+        } else {
+            $data['available'] = false;
+        }
+
+        // dd($data);
 
         // Actualitzar l'stock (la validació ha sortit bé).
         $stock->update($data);
 
         // Vista amb el llistat de categories.
-        return redirect()->action('CategoryController@index');
+        return redirect()->action('StockController@index');
     }
 
     /**
@@ -115,6 +132,7 @@ class StockController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // L'stock s'elimina de forma automàtica quan s'elimina un producte, a través
+        // de app\Product.php, funció destroyStock($productId).
     }
 }

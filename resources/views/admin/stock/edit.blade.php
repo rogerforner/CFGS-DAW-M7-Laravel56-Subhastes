@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Modify the stock.')
+@section('title', $product->name.': modify the stock.')
 @section('description', 'Modify the stock.')
 @section('content')
 
@@ -8,7 +8,7 @@
       <div class="col">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Modify the stock</h5>
+            <h5 class="card-title">Modify the stock of {{ $product->name }}.</h5>
 
             {{-- Errors --}}
             @if ($errors->any())

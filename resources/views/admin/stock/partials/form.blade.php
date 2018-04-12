@@ -1,13 +1,7 @@
-{{-- Name --}}
+{{-- Stock --}}
 <div class="form-group">
-  {{ Form::label('catName', 'Name') }}
-  {{ Form::text('name', null, ['class' => 'form-control', 'id' => 'catName']) }}
-</div>
-
-{{-- Description --}}
-<div class="form-group">
-  {{ Form::label('catDesc', 'Description') }}
-  {{ Form::textarea('description', null, ['class' => 'form-control', 'id' => 'catDesc', 'rows' => '3']) }}
+  {{ Form::label('numStock', 'Stock') }}
+  {{ Form::number('stock', 0, ['class' => 'form-control', 'id' => 'numStock', 'min' => '0', 'required']) }}
 </div>
 
 {{-- Button --}}

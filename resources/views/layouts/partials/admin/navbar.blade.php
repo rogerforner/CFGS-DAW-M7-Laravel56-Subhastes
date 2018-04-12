@@ -40,7 +40,7 @@
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownStock" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-people-carry"></i> Stock</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownStock">
           <a class="dropdown-item" href="{{action('StockController@index')}}">See stock</a>
-          <a class="dropdown-item" href="{{action('StockController@create')}}">Add stock</a>
+          <a class="dropdown-item" href="{{action('ProductController@create')}}">Add stock</a>
         </div>
       </li>
 
