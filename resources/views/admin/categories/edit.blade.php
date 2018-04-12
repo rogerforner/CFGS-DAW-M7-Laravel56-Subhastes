@@ -1,6 +1,6 @@
 @extends('layouts.admin')
-@section('title', 'Create a category.')
-@section('description', 'Create a new category.')
+@section('title', 'Edit a category.')
+@section('description', 'Edit a new category.')
 @section('content')
 
   <div class="container my-5">
@@ -8,7 +8,7 @@
       <div class="col">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Create a new category</h5>
+            <h5 class="card-title">Edit category</h5>
 
             {{-- Errors --}}
             @if ($errors->any())

@@ -2,9 +2,7 @@
 @section('title', 'User profile panel')
 @section('description', 'You"r profile control panel')
 @section('content')
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
 {{-- Contingut aquí --}}
 <div class="row my-0 py-0" style="margin-left:0px !important;margin-right:0px !important;">
   <div class="col-md-3 " style="padding-left:0px !important;">
@@ -73,9 +71,8 @@
   <!-- Subhastes (navegació) -->
   <nav class="nav nav-tabs" id="nav-tab" role="tablist">
     <a class="nav-item nav-link active" id="nav-actives-tab" data-toggle="tab"
-       href="#nav-actives" role="tab" aria-controls="actives" aria-expanded="true">You'r active auctions</a>
-
-    <a class="nav-item nav-link" id="nav-finalitzades-tab" data-toggle="tab" onclick="t();" href="#nav-finalitzades" role="tab" aria-controls="finalitzades" aria-expanded="false">You'r won auctions</a>
+       href="#nav-actives" role="tab" aria-controls="actives" aria-expanded="true">You'r won auctions</a>
+    <a class="nav-item nav-link btn btn-primary" href="{{action('UserProfileController@index')}}">Go back</a>
   </nav>
 
   <!-- Subhastes (contingut) -->
@@ -86,10 +83,10 @@
         <div class="col">
           <div class="card-deck">
             @php
-              $i=0;
+              $i1=0;
             @endphp
-            @forelse ($win as $auction)
-              @if ($i<4)
+            @forelse ($win1 as $auction)
+              @if ($i1<4)
                 <div class="col-3">
                 <div class="card">
                   <img class="card-img-top" src="{{ $auction->img }}" alt="{{ $auction->title }}">
@@ -99,7 +96,6 @@
                   </div>
                   <div class="card-footer">
                     <small class="text-muted">Ending: {{ $auction->date_end }}</small>
-
                   </div>
                 </div>
               </div>
@@ -118,10 +114,10 @@
             </div>
           @endif
           @php
-            $i++;
+            $i1++;
           @endphp
           @empty
-            <p>You don't have any active auctions at this moment. Go to <a href="{{action('AuctionClientController@index')}}">auctions.</a></p>
+            <p>You don't have any winned auction at this moment. Go to <a href="{{action('AuctionClientController@index')}}">auctions.</a></p>
           @endforelse
           </div><!-- /.card-deck -->
         </div><!-- /.col -->
@@ -129,114 +125,15 @@
       </div><!-- /.tab-pane -->
       <div class="row">
             <div class="mt-4 mx-auto">
-              {{ $win->links() }}
+              {{ $win1->links() }}
             </div><!-- /.col -->
           </div><!-- /.row -->
     </div>
-    <!-- Finalitzades -->
-    <div class="tab-pane fade" id="nav-finalitzades" role="tabpanel" aria-labelledby="nav-finalitzades-tab" aria-expanded="false">
-      <div class="row pl-3 mt-3" style="margin-left:0px !important;margin-right:0px !important;">
-        <div class="col">
-          <div class="card-deck">
-              @php
-                $i1=0;
-              @endphp
-              @forelse ($win1 as $auction)
-                @if ($i1<4)
-                  <div class="col-3">
-                  <div class="card">
-                    <img class="card-img-top" src="{{ $auction->img }}" alt="{{ $auction->title }}">
-                    <div class="card-body">
-                      <h5 class="card-title">{{ $auction->title }}</h5>
-                      <p class="card-text">{{ $auction->description }}</p>
-                    </div>
-                    <div class="card-footer">
-                      <small class="text-muted">Ending: {{ $auction->date_end }}</small>
-                      <small><a href="{{route('pdf',['id'=>$auction->id])}}">PDF</a></small>
-                    </div>
-                  </div>
-                </div>
-              @else
-                <div class="col-3 mt-4">
-                <div class="card">
-                  <img class="card-img-top" src="{{ $auction->img }}" alt="{{ $auction->title }}">
-                  <div class="card-body">
-                    <h5 class="card-title">{{ $auction->title }}</h5>
-                    <p class="card-text">{{ $auction->description }}</p>
-                  </div>
-                  <div class="card-footer">
-                    <small class="text-muted">Ending: {{ $auction->date_end }}</small>
-                    <small><a href="{{route('pdf',['id'=>$auction->id])}}">PDF</a></small>
-                  </div>
-                </div>
-              </div>
-            @endif
-            @php
-              $i1++;
-            @endphp
-            @empty
-              <p>You don't have any won auction at this moment. Go to <a href="{{action('AuctionClientController@index')}}">auctions.</a></p>
-            @endforelse
-          </div><!-- /.card-deck -->
-        </div><!-- /.col -->
 
-      </div ><!-- /.tab-pane -->
-      <div class="row">
-            <div class="mt-4 mx-auto">
-              <a href="{{route('index1')}}" class="btn btn-primary" name="button">See all you'r won auctions</a>
-            </div><!-- /.col -->
-          </div><!-- /.row -->
-      </div>
-
-    </div>
-  </div>
 </div><!-- /.col -->
 </div><!-- /.row -->
 </div><!-- /.container -->
 <script type="text/javascript">
-function load() {
-  let x=document.URL;
-  $(document).ready( function (e) {
-  if (x.split("#").pop()=="nav-finalitzades") {
-
-    var l1=document.getElementById("nav-finalitzades-tab");
-    var l2=document.getElementById("nav-actives-tab");
-
-
-
-
-    /*l1.classList.add("active");
-    l1.classList.add("show");
-    l1.setAttribute("aria-selected", true);
-    l2.classList.remove('active');
-    l2.classList.remove('show');
-    l2.setAttribute("aria-selected", false);*/
-    //$("#nav-finalitzades-tab a").tab('show');
-    $('#nav-finalitzades-tab').tab('show'); // Select last tab
-  }
-  });
-}
-  function t() {
-    let x=document.URL;
-    var ruta = x.substring(0, x.lastIndexOf('?'));
-    x=x.split("?").pop();
-    x=x.split("=").pop();
-
-    if (x) {
-      location.replace(ruta+"#nav-finalitzades");
-    }else {
-      //var l1=document.getElementById("nav-actives-tab"); //
-      //l1.classList.add("active show")
-      console.log(ruta);
-      window.history.replaceState({}, document.title, ruta);
-      console.log(document.title);
-      $(document).ready( function (e) {
-        $("#nav-finalitzades-tab a").tab('show');
-      });
-      location.replace(ruta+"#nav-finalitzades");
-    }
-  }
-load();
 
 
 </script>

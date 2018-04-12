@@ -1,5 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-0">
-  <a class="navbar-brand" href="{{action('UserProfileController@index')}}"><i class="fas fa-user-secret"></i> {{ Auth::user()->name }}</a>
+
+  <a class="navbar-brand" href="{{action('UserProfileController@index')}}"><i class="fas fa-user-secret"></i> Client</a>
+
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarTogglerClient" aria-controls="navbarTogglerClient" aria-expanded="false" aria-label="Toggle navigation">
     <span class="icon-bar top-bar"></span>
   	<span class="icon-bar middle-bar"></span>

@@ -1,4 +1,5 @@
 vendor/
+!vendor/laravel/framework/src/Illuminate/Support/Collection.php
 node_modules/
 npm-debug.log
 
@@ -19,3 +20,7 @@ auth.json
 
 # Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
 .rocketeer/
+
+# Uploaded images (development)
+public/images/*.png
+public/images/*.jpg

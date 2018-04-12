@@ -39,6 +39,8 @@ Route::group(['prefix'=>'client'], function () {
 // route for view/blade file
 //---------------------------
 Route::get('addPayment', 'PaymentController@addPayment')->name('addPayment');
+Route::get('index1', 'UserProfileController@index1')->name('index1');
+Route::get('/pdf/{id}', 'pdfController@index')->name('pdf');
 
 //-------------------------
 // route for post request
