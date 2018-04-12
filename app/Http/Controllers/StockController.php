@@ -27,7 +27,7 @@ class StockController extends Controller
     public function index()
     {
         $stocks = Stock::all();
-        foreach($stocks as $stock){
+        foreach ($stocks as $stock) {
             $stock->product = $stock->product($stock->product_id);
         }
 
