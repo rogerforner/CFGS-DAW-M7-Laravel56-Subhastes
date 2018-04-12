@@ -26,12 +26,13 @@ class StockController extends Controller
      */
     public function index()
     {
-        $stocks = Stock::all();
-        foreach ($stocks as $stock) {
-            $stock->product = $stock->product($stock->product_id);
+        $products = Product::all();
+        foreach ($products as $product) {
+            $product->stock = $product->stock($product->id);
+            $product->stotal = Stock::where('product_id',$product->id)->where('available',1)->count();
         }
-
-        return view('admin.stock.index', compact('stocks'));
+        
+        return view('admin.stock.index', compact('products'));
     }
 
     /**
