@@ -73,12 +73,12 @@
                           <i class="fas fa-eye"></i>
                         </a>
                         {{-- Editar --}}
-                        <a class="btn btn-primary btn-sm" href="{{ action('UserController@edit', ['id' => $user->id]) }}" role="button"
+                        <a class="btn btn-success btn-sm" href="{{ action('UserController@edit', ['id' => $user->id]) }}" role="button"
                            data-toggle="tooltip" data-placement="top" title="Editar">
                           <i class="fas fa-edit"></i>
                         </a>
                         {{-- Eliminar --}}
-                        <a class="btn btn-primary btn-sm rounded-right" role="button" href="" data-tooltip="tooltip" data-placement="top" title="Eliminar"
+                        <a class="btn btn-danger btn-sm rounded-right" role="button" href="" data-tooltip="tooltip" data-placement="top" title="Eliminar"
                            data-toggle="modal" data-target="#deleteUser-{{ $user->id }}">
                           <i class="fas fa-trash"></i>
                         </a>

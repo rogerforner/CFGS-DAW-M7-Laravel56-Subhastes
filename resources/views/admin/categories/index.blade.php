@@ -49,17 +49,17 @@
                     <td class="align-middle">
                       <div class="btn-group" role="group" aria-label="Accions">
                         {{-- Veure --}}
-                        <a class="btn btn-dark btn-sm" href="{{ action('CategoryController@show', ['id' => $category->id]) }}" role="button"
+                        <a class="btn btn-primary btn-sm" href="{{ action('CategoryController@show', ['id' => $category->id]) }}" role="button"
                            data-toggle="tooltip" data-placement="top" title="See">
                           <i class="fas fa-eye"></i>
                         </a>
                         {{-- Editar --}}
-                        <a class="btn btn-dark btn-sm" href="{{ action('CategoryController@edit', ['id' => $category->id]) }}" role="button"
+                        <a class="btn btn-success btn-sm" href="{{ action('CategoryController@edit', ['id' => $category->id]) }}" role="button"
                            data-toggle="tooltip" data-placement="top" title="Edit">
                           <i class="fas fa-edit"></i>
                         </a>
                         {{-- Eliminar --}}
-                        <a class="btn btn-dark btn-sm rounded-right" role="button" href="" data-tooltip="tooltip" data-placement="top" title="Delete"
+                        <a class="btn btn-danger btn-sm rounded-right" role="button" href="" data-tooltip="tooltip" data-placement="top" title="Delete"
                            data-toggle="modal" data-target="#deleteCategory-{{ $category->id }}">
                           <i class="fas fa-trash"></i>
                         </a>
