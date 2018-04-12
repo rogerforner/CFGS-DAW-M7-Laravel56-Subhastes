@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Stock;
 use Illuminate\Database\Eloquent\Model;
 use DB;
 use Category;
@@ -31,5 +32,23 @@ class Product extends Model
         }
         $cat_names = substr($cat_names, 0, -2);
         return $cat_names;
+    }
+
+    public function createStock($productId)
+    {
+        // Crear referència de forma automàtica.
+        do {
+            $reference = str_random(12);
+        } while (Stock::where("reference", "=", $reference)->first() instanceof Stock);
+
+        // Crear un stock per al producte afegit. Aquest serà igual a 0 ja que
+        // amb la creació del producte només es determina l'existència d'aquest,
+        // no la quantitat.
+        Stock::create([
+        'product_id' => $productId,
+        'reference'  => $reference,
+        // 'available'  => $data[''], // Default false
+        // 'stock'      => $data[''], // Default 0
+      ]);
     }
 }
