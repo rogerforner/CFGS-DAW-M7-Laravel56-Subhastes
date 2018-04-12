@@ -10,14 +10,13 @@
           <div class="card-body">
             <h5 class="card-title">Modify the stock of {{ $product->name }}.</h5>
 
-            {{-- Errors --}}
-            @if ($errors->any())
-              <div class="alert alert-danger">
-                <ul>
-                  @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                  @endforeach
-                </ul>
+            {{-- Warning --}}
+            @if (session('warning'))
+              <div class="alert alert-warning alert-dismissible fade show">
+                {{ session('warning') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
             @endif
 

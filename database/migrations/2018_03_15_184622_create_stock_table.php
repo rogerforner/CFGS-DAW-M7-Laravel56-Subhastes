@@ -16,8 +16,7 @@ class CreateStockTable extends Migration
         Schema::create('stock', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('product_id')->unsigned();
-            $table->boolean('available')->default(false);
-            $table->integer('stock')->default(0);
+            $table->boolean('available')->default(true);
             $table->string('reference')->unique();
             $table->timestamps();
             $table->foreign('product_id')->references('id')->on('products');

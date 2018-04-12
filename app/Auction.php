@@ -28,8 +28,9 @@ class Auction extends Model
     }
 
     public function getProduct($id){
-        $stock_id = DB::table('stock')->where('id',$id)->get(['product_id']);
-        $product = DB::table('products')->where('id',$stock_id[0]->product_id)->get();
+        $stock = DB::table('stock')->where('id',$id)->get(['product_id']);
+        $product = DB::table('products')->where('id',$stock[0]->product_id)->get();
+        //dd($product[0]);
         return $product[0];
     }
 }

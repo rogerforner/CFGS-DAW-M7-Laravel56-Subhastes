@@ -1,6 +1,6 @@
 @extends('layouts.admin')
-@section('title', 'Create a category.')
-@section('description', 'Create a new category.')
+@section('title', 'Create the stock.')
+@section('description', 'Create the stock.')
 @section('content')
 
   <div class="container my-5">
@@ -8,29 +8,28 @@
       <div class="col">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Create a new category</h5>
+            <h5 class="card-title">Create the stock.</h5>
 
-            {{-- Errors --}}
-            @if ($errors->any())
-              <div class="alert alert-danger">
-                <ul>
-                  @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                  @endforeach
-                </ul>
+            {{-- Warning --}}
+            @if (session('warning'))
+              <div class="alert alert-warning alert-dismissible fade show">
+                {{ session('warning') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
             @endif
 
             {{-- Formulari --}}
-            {{ Form::open(['action' => 'CategoryController@store', 'method' => 'post']) }}
-              @include('admin.categories.partials.form', [
-                'submitButton' => 'Create Category'
+            {{ Form::open(['action' => 'StockController@store', 'method' => 'post']) }}
+              @include('admin.stock.partials.form', [
+                'submitButton' => 'Create Stock'
               ])
             {{ Form::close() }}
 
             {{-- Tornar enrere --}}
             <p class="text-right">
-              <a href="{{ action('CategoryController@index') }}" class="card-link">
+              <a href="{{ action('StockController@index') }}" class="card-link">
                 <i class="far fa-arrow-alt-circle-left"></i> Go back
               </a>
             </p>
