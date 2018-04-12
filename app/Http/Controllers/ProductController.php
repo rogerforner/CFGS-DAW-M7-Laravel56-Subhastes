@@ -69,11 +69,6 @@ class ProductController extends Controller
         $product = Product::create($data);
         $product->registerCategories($product->id, $request->only('categories')['categories']);
 
-        // Registrar stock del producte automàticament.
-        // Per defecte stock = 0;
-        // Mirar app\Product.php, funció createStock($productId).
-        $product->createStock($product->id);
-
         session()->flash('success', 'Product created succesfully!');
         return redirect()->route('products.index');
     }
@@ -149,10 +144,6 @@ class ProductController extends Controller
         Product::where('id', $id)->update([
             'active' => false
         ]);
-
-        // Eliminar stock del producte automàticament.
-        // Mirar app\Product.php, funció destroyStock($productId).
-        Product::destroyStock($id);
 
         session()->flash('success', 'Product succesfully deleted!');
         return redirect()->route('products.index');
