@@ -1,4 +1,4 @@
-@extends('layouts.client')
+@extends('layouts.app')
 
 @section('content')
 <div class="container my-5">
@@ -51,7 +51,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-info">
                                     {{ __('Login') }}
                                 </button>
 
@@ -59,6 +59,10 @@
                                     {{ __('Forgot Your Password?') }}
                                 </a>
                             </div>
+                        </div>
+                        <div class="mt-4 col-5 mx-auto align-items-center">
+                            <a href="/auth/github" class="btn btn-dark mx-auto font-weight-bold px-3">GitHub <i style="font-size: 1.5em;" class="fab fa-github"></i></a>
+                            <a href="/auth/google" class="btn btn-danger mx-auto font-weight-bold px-3">Google <i style="font-size: 1.5em;" class="fab fa-google-plus-g"></i></a>
                         </div>
                     </form>
                 </div>

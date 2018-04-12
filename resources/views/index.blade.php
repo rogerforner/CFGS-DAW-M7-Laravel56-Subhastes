@@ -24,7 +24,7 @@
               <div class="card-deck">
                 @forelse ($activeAuctions as $activeAuction)
                   <div class="card">
-                    <img class="card-img-top" src="{{ $activeAuction->img }}" alt="{{ $activeAuction->title }}">
+                    <img class="card-img-top" src="{{ $activeAuction->image }}" alt="{{ $activeAuction->title }}">
                     <div class="card-body">
                       <h5 class="card-title">{{ $activeAuction->title }}</h5>
                       <p class="card-text">{{ $activeAuction->description }}</p>
@@ -47,7 +47,7 @@
               <div class="card-deck">
                 @forelse ($finishedAuctions as $finishedAuction)
                   <div class="card">
-                    <img class="card-img-top" src="{{ $finishedAuction->img }}" alt="{{ $finishedAuction->title }}">
+                    <img class="card-img-top" src="{{ $finishedAuction->image }}" alt="{{ $finishedAuction->title }}">
                     <div class="card-body">
                       <h5 class="card-title">{{ $finishedAuction->title }}</h5>
                       <p class="card-text">{{ $finishedAuction->description }}</p>

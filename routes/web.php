@@ -53,3 +53,9 @@ Route::post('paypal', 'PaymentController@postPaymentWithpaypal')->name('paypal')
 Route::get('paypal', 'PaymentController@getPaymentStatus')->name('status');
 
 Route::get('paypalerror', 'PaymentController@error')->name('paypalerror');
+
+/*
+# Socialite
+*****************************************************************************/
+Route::get('/auth/{provider}', 'Auth\AuthController@redirectToProvider');
+Route::get('/auth/{provider}/callback', 'Auth\AuthController@handleProviderCallback');

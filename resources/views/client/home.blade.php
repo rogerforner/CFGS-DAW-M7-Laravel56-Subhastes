@@ -7,9 +7,9 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 {{-- Contingut aquí --}}
 <div class="row my-0 py-0" style="margin-left:0px !important;margin-right:0px !important;">
-  <div class="col-md-3 " style="padding-left:0px !important;">
+  <div class="col-md-3 card shadow-2" style="padding-left:0px !important;">
       <div class="row" style="margin-left:0px !important;margin-right:0px !important;">
-          <div class="card shadow-2">
+          <div class="col">
             <div class="card-body">
               {{-- Errors --}}
               @if ($errors->any())
@@ -63,6 +63,38 @@
               </form>
               <br>
             </div>
+            <div class="col-12 mb-5">
+              <form class="form-horizontal" method="POST" id="payment-form" role="form" action="{!! URL::route('paypal') !!}" >
+                  {{ csrf_field() }}
+              <h5>Buy penpins</h5>
+              <div class="row">
+                <div class="col-6">
+                  <input type="radio" name="amount" value="5">
+                  <small>5€</small>
+                </div>
+                <div class="col-6">
+                  <input type="radio" name="amount" value="10">
+                  <small>10€</small>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-6">
+                  <input type="radio" name="amount" value="25">
+                  <small>25€</small>
+                </div>
+                <div class="col-6">
+                  <input type="radio" name="amount" value="50">
+                  <small>50€</small>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 mx-auto">
+                  <button class="btn btn-warning mx-auto" type="submit" name="button">Buy!</button>
+                </div>
+              </div>
+              </form>
+
+            </div>
           </div> <!-- /.card -->
       </div> <!-- /.row -->
   </div><!-- /.col -->
@@ -92,7 +124,7 @@
               @if ($i<4)
                 <div class="col-3">
                 <div class="card">
-                  <img class="card-img-top" src="{{ $auction->img }}" alt="{{ $auction->title }}">
+                  <img class="card-img-top" src="{{ $auction->getProduct($auction->stock_id)->image }}" alt="{{ $auction->title }}">
                   <div class="card-body">
                     <h5 class="card-title">{{ $auction->title }}</h5>
                     <p class="card-text">{{ $auction->description }}</p>
@@ -106,7 +138,7 @@
             @else
               <div class="col-3 mt-4">
               <div class="card">
-                <img class="card-img-top" src="{{ $auction->img }}" alt="{{ $auction->title }}">
+                <img class="card-img-top" src="{{ $auction->getProduct($auction->stock_id)->image }}" alt="{{ $auction->title }}">
                 <div class="card-body">
                   <h5 class="card-title">{{ $auction->title }}</h5>
                   <p class="card-text">{{ $auction->description }}</p>
@@ -145,7 +177,7 @@
                 @if ($i1<4)
                   <div class="col-3">
                   <div class="card">
-                    <img class="card-img-top" src="{{ $auction->img }}" alt="{{ $auction->title }}">
+                    <img class="card-img-top" src="{{ $auction->getProduct($auction->stock_id)->image }}" alt="{{ $auction->title }}">
                     <div class="card-body">
                       <h5 class="card-title">{{ $auction->title }}</h5>
                       <p class="card-text">{{ $auction->description }}</p>
@@ -159,7 +191,7 @@
               @else
                 <div class="col-3 mt-4">
                 <div class="card">
-                  <img class="card-img-top" src="{{ $auction->img }}" alt="{{ $auction->title }}">
+                  <img class="card-img-top" src="{{ $auction->getProduct($auction->stock_id)->image }}" alt="{{ $auction->title }}">
                   <div class="card-body">
                     <h5 class="card-title">{{ $auction->title }}</h5>
                     <p class="card-text">{{ $auction->description }}</p>
@@ -181,12 +213,15 @@
         </div><!-- /.col -->
 
       </div ><!-- /.tab-pane -->
-      <div class="row">
-            <div class="mt-4 mx-auto">
-              <a href="{{route('index1')}}" class="btn btn-primary" name="button">See all you'r won auctions</a>
-            </div><!-- /.col -->
-          </div><!-- /.row -->
-      </div>
+      @if (sizeof($win1)==8)
+        <div class="row">
+              <div class="mt-4 mx-auto">
+                <a href="{{route('index1')}}" class="btn btn-primary" name="button">See all you'r won auctions</a>
+              </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div>
+      @endif
+
 
     </div>
   </div>
@@ -197,6 +232,7 @@
 function load() {
   let x=document.URL;
   $(document).ready( function (e) {
+    x1=x.split("/paypal");
   if (x.split("#").pop()=="nav-finalitzades") {
 
     var l1=document.getElementById("nav-finalitzades-tab");
@@ -213,6 +249,8 @@ function load() {
     l2.setAttribute("aria-selected", false);*/
     //$("#nav-finalitzades-tab a").tab('show');
     $('#nav-finalitzades-tab').tab('show'); // Select last tab
+  }else if (x1[0]) {
+    window.history.replaceState({}, document.title, x1[0]);
   }
   });
 }
