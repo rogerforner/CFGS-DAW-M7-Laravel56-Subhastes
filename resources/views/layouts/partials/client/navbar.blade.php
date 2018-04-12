@@ -44,6 +44,7 @@
         <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
         <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
       @else
+        <li class="text-light my-auto"><i class="far fa-money-bill-alt"></i><span class="badge"> {{Auth::user()->cash}}</span></li>
         <li class="nav-item dropdown">
           <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
               <i class="fas fa-user-circle"></i> {{ Auth::user()->name }} <span class="caret"></span>

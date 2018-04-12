@@ -22,5 +22,3 @@ auth.json
 .rocketeer/
 
 # Uploaded images (development)
-public/images/*.png
-public/images/*.jpg

@@ -9,7 +9,13 @@ use Session;
 use Redirect;
 use Illuminate\Support\Facades\Input;
 use DB;
-
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
+use App\Product;
+use App\User;
+use Carbon\Carbon;
+use App\Auction;
+use Auth;
 //-------------------------
 //All Paypal Details class
 //-------------------------
@@ -48,7 +54,7 @@ class PaymentController extends Controller
 {
   Session::put('user_id',$request->input('user_id'));
   Session::put('address',$request->input('address'));
-
+  Session::put('amount',$request->input('amount'));
     $payer = new Payer();
     $payer->setPaymentMethod('paypal');
   $item_1 = new Item();
@@ -90,6 +96,7 @@ class PaymentController extends Controller
     }
     Session::put('paypal_payment_id', $payment->getId());
     if(isset($redirect_url)) {
+
         return Redirect::away($redirect_url);
     }
   return redirect()->route('paypalerror');
@@ -110,7 +117,50 @@ public function getPaymentStatus(Request $request)
     if ($result->getState() == 'approved') {
         //Aqui es on imprimirem la factura
         //Areturn redirect()->route('paywithpaypal', array('address' => $address, 'user_id' => $user_id));
-        return view('index');
+        $user=DB::table('users')->where('id', Auth::user()->id)->first();
+        $userBids = DB::table('biddings')->where('user_id', Auth::user()->id)->groupby('auction_id')->get(['auction_id']);
+        $userBids1 = DB::table('biddings')->where('user_id', Auth::user()->id)->get();
+        $array1=array();
+        foreach ($userBids1 as $bid){
+          $auction= Auction::find($bid->auction_id);
+          $auctionWiner = DB::table('auction_has_winner')->get(['bidding_id']);
+          foreach ($auctionWiner as $auction1){
+            $carbon= new Carbon();
+
+            if ($auction->date_end < $carbon && $auction1->bidding_id==$bid->id){
+              $array1[]=$auction;
+            }
+          }
+        }
+
+        $array=array();
+        foreach ($userBids as $bid){
+          $auction= Auction::find($bid->auction_id);
+          $carbon= new Carbon();
+
+          if ($auction->date_end > $carbon){
+            $array[]=$auction;
+          }
+        }
+
+        $array=collect($array);
+
+        $array1=collect($array1);
+
+        $page = (Paginator::resolveCurrentPage( ));
+
+        $perPage = 8;
+
+        $win = (new LengthAwarePaginator(
+            $array->forPage($page, $perPage), $array->count(), $perPage, $page)
+        )->withPath('');
+        $win1 = (new LengthAwarePaginator(
+            $array1->forPage($page, $perPage), $array1->count(), $perPage, $page)
+        );
+        User::where('id',Auth::user()->id)->update([
+          'cash' => $user->cash+Session::get('amount')
+        ]);
+        return view('client.home', ['win' => $win, 'user'=>$user, 'win1' => $win1]);
     }
 return Redirect::route('paypalerror');
 }
