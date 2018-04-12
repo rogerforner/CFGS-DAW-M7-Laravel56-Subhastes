@@ -1,6 +1,6 @@
 @extends('layouts.admin')
-@section('title', $product->name.': modify the stock.')
-@section('description', 'Modify the stock.')
+@section('title', 'Create the stock.')
+@section('description', 'Create the stock.')
 @section('content')
 
   <div class="container my-5">
@@ -8,7 +8,7 @@
       <div class="col">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Modify the stock of {{ $product->name }}.</h5>
+            <h5 class="card-title">Create the stock.</h5>
 
             {{-- Warning --}}
             @if (session('warning'))
@@ -21,9 +21,9 @@
             @endif
 
             {{-- Formulari --}}
-            {{ Form::model($stock, ['action' => ['StockController@update', $stock->id], 'method' => 'patch']) }}
+            {{ Form::open(['action' => 'StockController@store', 'method' => 'post']) }}
               @include('admin.stock.partials.form', [
-                'submitButton' => 'Update Stock'
+                'submitButton' => 'Create Stock'
               ])
             {{ Form::close() }}
 

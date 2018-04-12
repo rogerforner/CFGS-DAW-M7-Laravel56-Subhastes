@@ -36,9 +36,8 @@
                 <tr>
                   <th scope="col">ID</th>
                   <th scope="col">Product</th>
-                  <th scope="col">Stock</th>
                   <th scope="col">Available</th>
-                  <th scope="col">Reference</th>
+                  <th scope="col">Total</th>
                   <th scope="col">Action</th>
                 </tr>
               </thead>
@@ -47,16 +46,10 @@
                   <tr>
                     <td class="align-middle">{{ $stock->id }}</td>
                     <td class="align-middle">{{ $stock->product->name }}</td>
-                    <td class="align-middle">{{ $stock->stock }}</td>
                     <td class="align-middle">{{ $stock->available == 0 ? "No stock" : "Available" }}</td>
-                    <td class="align-middle">{{ $stock->reference }}</td>
+                    <th scope="col">-</th>
                     <td class="align-middle">
                       <div class="btn-group" role="group" aria-label="Accions">
-                        {{-- Veure --}}
-                        <a class="btn btn-primary btn-sm" href="{{ action('StockController@show', ['id' => $stock->id]) }}" role="button"
-                           data-toggle="tooltip" data-placement="top" title="See">
-                          <i class="fas fa-eye"></i>
-                        </a>
                         {{-- Editar --}}
                         <a class="btn btn-success btn-sm rounded-right" href="{{ action('StockController@edit', ['id' => $stock->id]) }}" role="button"
                            data-toggle="tooltip" data-placement="top" title="Edit">
@@ -67,7 +60,7 @@
                   </tr>
                 @empty
                   <tr>
-                    <td colspan="5">There are no stock yet. <a href="{{ action('ProductController@create') }}">Create a product to have stock!</a>.</td>
+                    <td colspan="5">There are no stock yet. <a href="{{ action('StockController@create') }}">Create a new one!</a>.</td>
                   </tr>
                 @endforelse
               </tbody>
@@ -78,4 +71,11 @@
     </div> <!-- /.col -->
   </div> <!-- /.row -->
 </div>
+
+@section('script')
+<script type="text/javascript">
+
+</script>
+@endsection
+
 @endsection

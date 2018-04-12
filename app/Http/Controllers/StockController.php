@@ -41,14 +41,15 @@ class StockController extends Controller
      */
     public function create()
     {
-        // L'stock es crea de forma automàtica quan es crea un producte, a través
-        // de app\Product.php, funció createStock($productId).
-
-        // Quan es crea un producte es genera un stock amb valors:
-        // - product_id: id del producte passat per paràmetre.
-        // - reference: generada automàticament, str_random(24).
-        // - available: per defecte "false".
-        // - stock: per defecte 0.
+        // Si no hi ha productes creats no deixem crear stock. EN cas contrari
+        // permetem crear-ne.
+        $products = Product::all();
+        if(sizeof($products) == 0){
+            session()->flash('warning','You must insert products before create a stock!');
+            return redirect()->action('StockController@index');
+        } else {
+          return view('admin.stock.create', compact('products'));
+        }
     }
 
     /**
@@ -59,7 +60,34 @@ class StockController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validar dades obtingudes del formulari.
+        $data = $request->validate([
+            'numProducts' => 'required|integer',
+            'product'     => 'required|integer',
+        ]);
+
+        if ($data['product'] != 0 || $data['numProducts'] > 0) {
+          // Crear tants stocks del producti com s'hagin detrminat.
+          while ($data['numProducts'] > 0) {
+              // Crear una referència de forma automàtica i única a la DB.
+              do {
+                  $reference = str_random(24);
+              } while (Stock::where("reference", "=", $reference)->first() instanceof Stock);
+
+              Stock::create([
+                  'product_id' => $data['product'],
+                  'reference'  => $reference,
+              ]);
+
+              $data['numProducts']--;
+          }
+        } else {
+          session()->flash('warning','Select a product and add a stock greater than 0!');
+          return redirect()->action('StockController@create');
+        }
+
+        // Vista amb el llistat de categories.
+        return redirect()->action('StockController@index');
     }
 
     /**
@@ -132,7 +160,6 @@ class StockController extends Controller
      */
     public function destroy($id)
     {
-        // L'stock s'elimina de forma automàtica quan s'elimina un producte, a través
-        // de app\Product.php, funció destroyStock($productId).
+        //
     }
 }
