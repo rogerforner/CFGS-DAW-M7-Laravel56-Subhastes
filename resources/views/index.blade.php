@@ -24,7 +24,7 @@
               <div class="card-deck">
                 @forelse ($activeAuctions as $activeAuction)
                   <div class="card">
-                    <img class="card-img-top" src="{{ $activeAuction->image }}" alt="{{ $activeAuction->title }}">
+                    <img class="card-img-top" src="{{ $activeAuction->product->image }}" alt="{{ $activeAuction->title }}">
                     <div class="card-body">
                       <h5 class="card-title">{{ $activeAuction->title }}</h5>
                       <p class="card-text">{{ $activeAuction->description }}</p>

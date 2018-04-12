@@ -15,10 +15,18 @@ class AuctionClientController extends Controller
     public function index()
     {
         $now = date("Y-m-d H:i:s");
-        $activeAuctions = Auction::where('date_end', '>=', $now)->get();
-        $finishedAuctions = Auction::where('date_end', '<', $now)->get();
 
-        return view('index', compact(['activeAuctions', 'finishedAuctions', 'now']));
+        $activeAuctions = Auction::where('date_end', '>=', $now)->get();
+        foreach($activeAuctions as $activeAuction){
+            $activeAuction->product = $activeAuction->getProduct($activeAuction->stock_id);
+        }
+
+        $finishedAuctions = Auction::where('date_end', '<', $now)->get();
+        foreach($finishedAuctions as $finishedAuction){
+            $finishedAuction->product = $finishedAuction->getProduct($finishedAuction->stock_id);
+        }
+
+        return view('index', compact(['activeAuctions', 'finishedAuctions']));
     }
 
     /**
