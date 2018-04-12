@@ -63,7 +63,7 @@ class UserProfileController extends Controller
 
         $paginator = (new LengthAwarePaginator(
             $array->forPage($page, $perPage), $array->count(), $perPage, $page)
-        )->withPath('win');
+        )->withPath('');
         $paginator1 = (new LengthAwarePaginator(
             $array1->forPage($page, $perPage), $array1->count(), $perPage, $page)
         );
