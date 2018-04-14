@@ -6,7 +6,7 @@ use Auth;
 use App\Category;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class CategoryAdminController extends Controller
 {
     /**
      * Create a new controller instance.

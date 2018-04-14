@@ -18,7 +18,7 @@ Auth::routes();
 *******************************************************************************/
 Route::group(['prefix'=>'admin'], function () {
     Route::resource('/', 'HomeController', ['only' => ['index']]);
-    Route::resource('categories', 'CategoryController');
+    Route::resource('categories', 'CategoryAdminController');
     Route::resource('products', 'ProductController');
     Route::resource('stock', 'StockController');
     Route::resource('auctions', 'AuctionAdminController');
@@ -59,3 +59,5 @@ Route::get('paypalerror', 'PaymentController@error')->name('paypalerror');
 *****************************************************************************/
 Route::get('/auth/{provider}', 'Auth\AuthController@redirectToProvider');
 Route::get('/auth/{provider}/callback', 'Auth\AuthController@handleProviderCallback');
+
+Route::resource('categories', 'CategoryClientController', ['only' => ['index', 'show']]);

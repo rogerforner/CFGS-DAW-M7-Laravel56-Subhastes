@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use DB;
 use App\User;
+use App\Stock;
 
 class Auction extends Model
 {
@@ -32,6 +33,17 @@ class Auction extends Model
         $product = DB::table('products')->where('id',$stock[0]->product_id)->get();
         //dd($product[0]);
         return $product[0];
+    }
+
+    public function getCategory($stock_id,$id){
+        $product = $this->getProduct($stock_id);
+        $categories = DB::table('product_has_category')->where('product_id',$product->id)->where('category_id',$id)->get();
+        if(sizeof($categories) == 0){
+            return null;
+        }
+        $category = Category::where('id',$categories[0]->category_id)->get();
+        //dd($category);
+        return $category[0];
     }
 }
 
