@@ -44,9 +44,4 @@ return [
         'client_secret' => env('GOOGLE_CLIENT_SECRET', 'EuDZ0eJO6YLt__Q8RBbxbm3n'), // Your Google Client Secret
         'redirect' => 'http://laravel5.6-subhastes.ooo/auth/google/callback',
     ],
-   'facebook' => [
-        'client_id' => env('FACEBOOK_ID','325011751354708'),
-        'client_secret' => env('FACEBOOK_SECRET','8223121f7da2098b47ceef055142f346'),
-        'redirect' => env('FACEBOOK_REDIRECT_URL','http://laravel5.6-subhastes.ooo/auth/facebook/callback'),
-    ],
 ];
