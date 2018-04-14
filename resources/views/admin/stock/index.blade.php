@@ -38,25 +38,15 @@
                   <th scope="col">Product</th>
                   <th scope="col">Available</th>
                   <th scope="col">Total</th>
-                  <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody>
-                @forelse ($stocks as $stock)
+                @forelse ($products as $product)
                   <tr>
-                    <td class="align-middle">{{ $stock->id }}</td>
-                    <td class="align-middle">{{ $stock->product->name }}</td>
-                    <td class="align-middle">{{ $stock->available == 0 ? "No stock" : "Available" }}</td>
-                    <th scope="col">-</th>
-                    <td class="align-middle">
-                      <div class="btn-group" role="group" aria-label="Accions">
-                        {{-- Editar --}}
-                        <a class="btn btn-success btn-sm rounded-right" href="{{ action('StockController@edit', ['id' => $stock->id]) }}" role="button"
-                           data-toggle="tooltip" data-placement="top" title="Edit">
-                          <i class="fas fa-edit"></i>
-                        </a>
-                      </div><!-- /.btn-group -->
-                    </td>
+                    <td class="align-middle">{{ $product->stock->id }}</td>
+                    <td class="align-middle">{{ $product->name }}</td>
+                    <td class="align-middle">{{ $product->stotal == 0 ? "No stock" : "Available" }}</td>
+                    <th scope="col">{{ $product->stotal }}</th>
                   </tr>
                 @empty
                   <tr>

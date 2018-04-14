@@ -33,4 +33,10 @@ class Product extends Model
         $cat_names = substr($cat_names, 0, -2);
         return $cat_names;
     }
+
+    public function stock($id)
+    {
+        $stock = Stock::where('id',$id)->get();
+        return $stock[0];
+    }
 }
