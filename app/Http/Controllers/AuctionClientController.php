@@ -60,13 +60,19 @@ class AuctionClientController extends Controller
      */
     public function show($id)
     {
-        if (Auth::guest()){
-            return redirect()->route('login');
-        }
+        $now = date("Y-m-d H:i:s");
         $auction = Auction::where('id',$id)->get();
         $total_bids = DB::table('biddings')->where('auction_id',$id)->count();
         $winner = $auction[0]->getWinner($auction[0]->id);
         $user_id = Auth::user()->id;
+        
+        if($auction[0]->date_start > $now || $auction[0]->date_end < $now){
+            return redirect()->route('auction.index');
+        }
+        if (Auth::guest()){
+            return redirect()->route('login');
+        }
+        
         if($winner == NULL){
             $status = "No Winner";
             $color = "orange";

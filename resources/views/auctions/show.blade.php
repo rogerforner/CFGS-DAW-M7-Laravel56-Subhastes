@@ -53,7 +53,11 @@
 $('[data-countdown]').each(function() {
   var $this = $(this), finalDate = $(this).data('countdown');
     $this.countdown(finalDate, function(event) {
-    $this.html(event.strftime('%D days %H:%M:%S'));
+    var countdown_time = event.strftime('%D days %H:%M:%S')
+    $this.html(countdown_time);
+    if(countdown_time == "00 days 00:00:00"){
+        location.reload();
+    }
   });
 });
 </script>

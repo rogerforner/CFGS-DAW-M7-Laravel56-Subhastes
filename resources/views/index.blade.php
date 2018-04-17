@@ -43,11 +43,11 @@
         <!-- Finalitzades -->
         <div class="tab-pane fade" id="nav-finalitzades" role="tabpanel" aria-labelledby="nav-finalitzades-tab" aria-expanded="false">
           <div class="row px-3 mt-3">
-            <div class="col">
+            <div class="col-12 col-sm-6">
               <div class="card-deck">
                 @forelse ($finishedAuctions as $finishedAuction)
                   <div class="card">
-                    <img width="100%" class="card-img-top" src="{{ $finishedAuction->image }}" alt="{{ $finishedAuction->title }}">
+                    <img width="100%" class="card-img-top" src="{{ $finishedAuction->getProduct($finishedAuction->stock_id)->image }}" alt="{{ $finishedAuction->title }}">
                     <div class="card-body">
                       <h5 class="card-title">{{ $finishedAuction->title }}</h5>
                       <p class="card-text">{{ $finishedAuction->description }}</p>
