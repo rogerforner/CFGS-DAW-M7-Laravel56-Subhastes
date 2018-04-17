@@ -33,7 +33,6 @@ class ProductController extends Controller
             $names = $prod->getCategories($prod->id);
             $cat_names[$prod->id] = $names;
         }
-
         return view('admin.products.index')->with(['products' => $products, 'categories' => $cat_names]);
     }
 

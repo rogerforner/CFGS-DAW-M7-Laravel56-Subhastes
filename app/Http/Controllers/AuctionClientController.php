@@ -101,8 +101,6 @@ class AuctionClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //dd(DB::table('biddings')->select('amount',DB::Raw('COUNT(amount) as count'))->groupBy('amount')->havingRaw('COUNT(amount) = 1')->orderBy('amount','ASC')->limit(1)->get());
-
         $_BID_TAX = 0.5;
         $auction = Auction::find($id)->get();
         $qty = $request->only('qty');
@@ -122,20 +120,14 @@ class AuctionClientController extends Controller
         ]);
 
         $min_bid = DB::table('biddings')->select('amount',DB::Raw('COUNT(amount) as count'))->groupBy('amount')->havingRaw('COUNT(amount) = 1')->orderBy('amount','ASC')->limit(1)->get();
-        //echo "<script>console.log($min_bid)</script>";
         if(sizeof($min_bid) == 0){
             DB::table('auction_has_winner')->where('auction_id',$id)->update([
                 'bidding_id' => NULL
             ]);
-        }else if($min_bid[0]->amount != $qty['qty'] && $min_bid[0]->amount > $qty['qty']){
-            $new_bidding = DB::table('biddings')->where('auction_id',$id)->orderBy('id','DESC')->limit(1)->get();
+        }else{
+            $new_winner = DB::table('biddings')->where('amount',$qty['qty'])->get();
             DB::table('auction_has_winner')->where('auction_id',$id)->update([
-                'bidding_id' => $new_bidding[0]->id
-            ]);
-        }else if($min_bid[0]->amount == $qty['qty']){
-            $new_bidding = DB::table('biddings')->where('auction_id',$id)->orderBy('id','DESC')->limit(1)->get();
-            DB::table('auction_has_winner')->where('auction_id',$id)->update([
-                'bidding_id' => $new_bidding[0]->id
+                'bidding_id' => $new_winner[0]->id
             ]);
         }
         return redirect()->route('auction.show',['id'=>$id]);
