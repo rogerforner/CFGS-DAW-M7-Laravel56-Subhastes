@@ -28,7 +28,7 @@
             <p style="margin-bottom: 0;">Auction status:<br>{{$status}}</p>
             <i style="border: 0.5px solid black;border-radius:100%;color:{{$color}};" class="mx-auto fa fa-circle"></i>
             <p style="margin-bottom: 0;margin-top: 1rem;">Auction bids: {{$total_bids}}</p>
-            <p id="countdown">12:03:46h</p>
+            <p id="countdown" data-countdown="{{$auction->date_end}}"></p>
         </div>
         <div class="col-12 col-md-4 text-center">
             {{Form::open(['route' => ['auction.update',$auction->id], 'files' => true, 'method' => 'PUT'])}}
@@ -46,4 +46,17 @@
         </div>
     </div>
 </div>
+
+@section('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.countdown/2.2.0/jquery.countdown.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+$('[data-countdown]').each(function() {
+  var $this = $(this), finalDate = $(this).data('countdown');
+    $this.countdown(finalDate, function(event) {
+    $this.html(event.strftime('%D days %H:%M:%S'));
+  });
+});
+</script>
+@endsection
+
 @endsection
