@@ -101,16 +101,10 @@ class AuctionClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd(DB::table('biddings')->select(DB::Raw('id, amount, COUNT(amount) as count'))->groupBy('amount','id')->having(DB::Raw('COUNT(amount)'),'>',1)->orderBy('amount','ASC')->get());
+        //dd(DB::table('biddings')->select('amount',DB::Raw('COUNT(amount) as count'))->groupBy('amount')->havingRaw('COUNT(amount) = 1')->orderBy('amount','ASC')->limit(1)->get());
 
         $_BID_TAX = 0.5;
         $auction = Auction::find($id)->get();
-        $winner_bid_id = DB::table('auction_has_winner')->where('auction_id',$id)->get();
-        $winner_bid = NULL;
-        if($winner_bid_id[0]->bidding_id != NULL){
-            $winner_bid = DB::table('biddings')->where('id',$winner_bid_id[0]->bidding_id)->get();
-        }
-        $total_bids = DB::table('biddings')->where('auction_id',$id)->count();
         $qty = $request->only('qty');
         $qty['qty'] = number_format($qty['qty'],2,',','');
         $actual_cash = Auth::user()->cash;
@@ -118,58 +112,31 @@ class AuctionClientController extends Controller
         DB::table('users')->where('id',Auth::user()->id)->update([
             'cash' => $rest_cash
         ]);
+        
         $qty['qty'] = str_replace(',','.',$qty['qty']);
-        if($total_bids == 0){
-            DB::table('biddings')->insert([
-                'user_id' => Auth::user()->id,
-                'amount' => $qty['qty'],
-                'auction_id' => $id
+        
+        DB::table('biddings')->insert([
+            'user_id' => Auth::user()->id,
+            'amount' => $qty['qty'],
+            'auction_id' => $id
+        ]);
+
+        $min_bid = DB::table('biddings')->select('amount',DB::Raw('COUNT(amount) as count'))->groupBy('amount')->havingRaw('COUNT(amount) = 1')->orderBy('amount','ASC')->limit(1)->get();
+        //dd(sizeof($min_bid));
+        if(sizeof($min_bid) == 0){
+            DB::table('auction_has_winner')->where('auction_id',$id)->update([
+                'bidding_id' => NULL
             ]);
+        }else if($min_bid[0]->amount != $qty['qty'] && $min_bid[0]->amount > $qty['qty']){
             $new_bidding = DB::table('biddings')->where('auction_id',$id)->orderBy('id','DESC')->limit(1)->get();
             DB::table('auction_has_winner')->where('auction_id',$id)->update([
                 'bidding_id' => $new_bidding[0]->id
             ]);
-        }else if($winner_bid == NULL){
-            DB::table('biddings')->insert([
-                'user_id' => Auth::user()->id,
-                'amount' => $qty['qty'],
-                'auction_id' => $id
-            ]);
-            $same_bids = DB::table('biddings')->where('auction_id',$id)->where('amount',$qty['qty'])->count();
-            if($same_bids = 1){
-                $new_bidding = DB::table('biddings')->where('auction_id',$id)->orderBy('id','DESC')->limit(1)->get();
-                DB::table('auction_has_winner')->where('auction_id',$id)->update([
-                    'bidding_id' => $new_bidding[0]->id
-                ]);
-            }
-        }else if($winner_bid[0]->amount == $qty['qty']){
-            DB::table('biddings')->insert([
-                'user_id' => Auth::user()->id,
-                'amount' => $qty['qty'],
-                'auction_id' => $id
-            ]);
+        }else if($min_bid[0]->amount == $qty['qty']){
+            $new_bidding = DB::table('biddings')->where('auction_id',$id)->orderBy('id','DESC')->limit(1)->get();
             DB::table('auction_has_winner')->where('auction_id',$id)->update([
-                'bidding_id' => NULL
+                'bidding_id' => $new_bidding[0]->id
             ]);
-        }else if($winner_bid[0]->amount > $qty['qty']){
-            DB::table('biddings')->insert([
-                'user_id' => Auth::user()->id,
-                'amount' => $qty['qty'],
-                'auction_id' => $id
-            ]);
-        }else if($winner_bid[0]->amount < $qty['qty']){
-            DB::table('biddings')->insert([
-                'user_id' => Auth::user()->id,
-                'amount' => $qty['qty'],
-                'auction_id' => $id
-            ]);
-            $same_bids = DB::table('biddings')->where('auction_id',$id)->where('amount',$qty['qty'])->count();
-            if($same_bids == 1){
-                $new_bidding = DB::table('biddings')->where('auction_id',$id)->orderBy('id','DESC')->limit(1)->get();
-                DB::table('auction_has_winner')->where('auction_id',$id)->update([
-                    'bidding_id' => $new_bidding[0]->id
-                ]);
-            }
         }
         return redirect()->route('auction.show',['id'=>$id]);
     }
