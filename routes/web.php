@@ -14,6 +14,11 @@ Route::group(['prefix'=>'/'], function () {
 Auth::routes();
 
 /*
+# Verificar email
+*******************************************************************************/
+Route::get('/user/verify/{token}', 'Auth\RegisterController@verifyUser');
+
+/*
 # Administració
 *******************************************************************************/
 Route::group(['prefix'=>'admin'], function () {

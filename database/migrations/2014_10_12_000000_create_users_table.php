@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->timestamps();
             $table->boolean('active')->default(true);
             $table->decimal('cash',8,2)->default('0.00');
+            $table->boolean('verified')->default(false);
         });
     }
 
