@@ -4,7 +4,7 @@
 # Client (arrel)
 *******************************************************************************/
 Route::group(['prefix'=>'/'], function () {
-    Route::resource('/', 'AuctionClientController', ['only' => ['index']]);
+    Route::resource('auctions', 'AuctionClientController', ['only' => ['index','show','update']]);
     Route::resource('auctions-feed', 'AuctionJsonFeedController', ['only' => ['index']]);
 });
 
@@ -61,3 +61,4 @@ Route::get('/auth/{provider}', 'Auth\AuthController@redirectToProvider');
 Route::get('/auth/{provider}/callback', 'Auth\AuthController@handleProviderCallback');
 
 Route::resource('categories', 'CategoryClientController', ['only' => ['index', 'show']]);
+Route::get('/','AuctionClientController@index');

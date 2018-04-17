@@ -28,7 +28,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
         {{-- Formulari --}}
-        {{ Form::open(['action' => ['CategoryController@destroy', $id], 'method' => 'delete']) }}
+        {{ Form::open(['action' => ['CategoryAdminController@destroy', $id], 'method' => 'delete']) }}
           {{ Form::button('<i class="fas fa-trash"></i> Delete', ['type' => 'submit', 'class' => 'btn btn-danger']) }}
         {{ Form::close() }}
       </div>

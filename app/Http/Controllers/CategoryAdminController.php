@@ -61,7 +61,7 @@ class CategoryAdminController extends Controller
         ]);
 
         // Vista amb el llistat de categories.
-        return redirect()->action('CategoryController@index');
+        return redirect()->action('CategoryAdminController@index');
     }
 
     /**
@@ -116,7 +116,7 @@ class CategoryAdminController extends Controller
         $category->update($data);
 
         // Vista amb el llistat de categories.
-        return redirect()->action('CategoryController@index');
+        return redirect()->action('CategoryAdminController@index');
     }
 
     /**

@@ -22,7 +22,7 @@
             @endif
 
             {{-- Formulari --}}
-            {{ Form::open(['action' => 'CategoryController@store', 'method' => 'post']) }}
+            {{ Form::open(['action' => 'CategoryAdminController@store', 'method' => 'post']) }}
               @include('admin.categories.partials.form', [
                 'submitButton' => 'Create Category'
               ])
@@ -30,7 +30,7 @@
 
             {{-- Tornar enrere --}}
             <p class="text-right">
-              <a href="{{ action('CategoryController@index') }}" class="card-link">
+              <a href="{{ action('CategoryAdminController@index') }}" class="card-link">
                 <i class="far fa-arrow-alt-circle-left"></i> Go back
               </a>
             </p>

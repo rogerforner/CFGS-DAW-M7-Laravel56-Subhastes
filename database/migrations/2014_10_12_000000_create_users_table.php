@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->boolean('active')->default(true);
-            $table->integer('cash');
+            $table->decimal('cash',8,2)->default('0.00');
         });
     }
 

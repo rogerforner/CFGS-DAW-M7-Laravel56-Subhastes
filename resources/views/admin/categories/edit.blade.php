@@ -22,7 +22,7 @@
             @endif
 
             {{-- Formulari --}}
-            {{ Form::model($category, ['action' => ['CategoryController@update', $category->id], 'method' => 'patch']) }}
+            {{ Form::model($category, ['action' => ['CategoryAdminController@update', $category->id], 'method' => 'patch']) }}
               @include('admin.categories.partials.form', [
                 'submitButton' => 'Update Category'
               ])
@@ -30,7 +30,7 @@
 
             {{-- Tornar enrere --}}
             <p class="text-right">
-              <a href="{{ action('CategoryController@index') }}" class="card-link">
+              <a href="{{ action('CategoryAdminController@index') }}" class="card-link">
                 <i class="far fa-arrow-alt-circle-left"></i> Go back
               </a>
             </p>

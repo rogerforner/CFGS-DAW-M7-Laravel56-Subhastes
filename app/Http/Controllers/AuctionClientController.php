@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Auction;
 use Illuminate\Http\Request;
+use Auth;
 
 class AuctionClientController extends Controller
 {
@@ -58,7 +59,11 @@ class AuctionClientController extends Controller
      */
     public function show($id)
     {
-        //
+        if (Auth::guest()){
+            return redirect()->route('login');
+        }
+        $auction = Auction::where('id',$id)->get();
+        return view('auctions.show')->with(['auction' => $auction[0]]);
     }
 
     /**
