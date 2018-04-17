@@ -122,7 +122,7 @@ class AuctionClientController extends Controller
         ]);
 
         $min_bid = DB::table('biddings')->select('amount',DB::Raw('COUNT(amount) as count'))->groupBy('amount')->havingRaw('COUNT(amount) = 1')->orderBy('amount','ASC')->limit(1)->get();
-        //dd(sizeof($min_bid));
+        //echo "<script>console.log($min_bid)</script>";
         if(sizeof($min_bid) == 0){
             DB::table('auction_has_winner')->where('auction_id',$id)->update([
                 'bidding_id' => NULL

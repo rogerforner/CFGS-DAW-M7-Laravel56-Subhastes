@@ -55,7 +55,6 @@ class AuthController extends Controller
             return $authUser;
         }
         $provider = session()->get('provider');
-        dd($provider);
         if($provider == 'google'){
             session()->forget('provider');
             return User::create([
