@@ -24,19 +24,25 @@
     </div>
     <hr>
     <div class="row">
-        <div class="col-12 col-md-4">
-            <p class="text-center">Estat de la subhasta</p>
-            <i class="mx-auto fa fa-circle"></i>
-            <p class="text-center" id="countdown">12:03:46h</p>
+        <div class="col-12 col-md-4 text-center">
+            <p style="margin-bottom: 0;">Auction status:<br>{{$status}}</p>
+            <i style="border: 0.5px solid black;border-radius:100%;color:{{$color}};" class="mx-auto fa fa-circle"></i>
+            <p style="margin-bottom: 0;margin-top: 1rem;">Auction bids: {{$total_bids}}</p>
+            <p id="countdown">12:03:46h</p>
         </div>
-        <div class="col-12 col-md-4">
-            <input class="form-control" type="text" name="" id="" placeholder="Quantity to bid...">
-            <button class="btn btn-primary" type="submit">Bid</button>
+        <div class="col-12 col-md-4 text-center">
+            {{Form::open(['route' => ['auction.update',$auction->id], 'files' => true, 'method' => 'PUT'])}}
+                <div style="width: 50%;" class="mx-auto form-group">
+                    {{Form::label('qty', 'Quantity to bid')}}
+                    {{Form::number('qty',null,['step' => 'any','class' => 'form-control','max' => Auth::user()->cash - 0.50,'min' => 0.01])}}
+                </div>
+                {{Form::submit('Make a bid',['class' => 'btn btn-primary'])}}
+            {{Form::close()}}
         </div>
-        <div class="col-12 col-md-4">
+        <div class="col-12 col-md-4 text-center">
             <p>El teu saldo actual és:</p>
-            <p>{{Auth::user()->cash}}</p>
-            <a class="btn btn-info" href=""><i class="fa fa-plus"></i> Cash</a>
+            <p style="margin-bottom: 1.3rem;">{{Auth::user()->cash}} €</p>
+            <a class="btn btn-info" href="">Buy Cash</a>
         </div>
     </div>
 </div>

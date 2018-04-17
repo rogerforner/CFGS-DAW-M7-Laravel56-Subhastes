@@ -4,7 +4,7 @@
 # Client (arrel)
 *******************************************************************************/
 Route::group(['prefix'=>'/'], function () {
-    Route::resource('auctions', 'AuctionClientController', ['only' => ['index','show','update']]);
+    Route::resource('auction', 'AuctionClientController', ['only' => ['index','show','update']]);
     Route::resource('auctions-feed', 'AuctionJsonFeedController', ['only' => ['index']]);
 });
 

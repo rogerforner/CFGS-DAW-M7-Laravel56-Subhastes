@@ -14,18 +14,17 @@ class Auction extends Model
 
     public function getWinner($id){
         $winner = DB::table('auction_has_winner')->where('auction_id',$id)->get();
-        //dd($winner);
         if(!empty($winner)){
             if($winner[0]->bidding_id != NULL){
                 $id_winner = DB::table('biddings')->where('id',$winner[0]->bidding_id)->get();
-                $winner_data = User::find($id_winner[0]->user_id)->get();
+                $winner_data = User::where('id',$id_winner[0]->user_id)->get();
             }else{
                $winner_data = NULL; 
             }
         }else{
             $winner_data = NULL;
         }
-        return $winner_data;
+        return $winner_data[0];
     }
 
     public function getProduct($id){
