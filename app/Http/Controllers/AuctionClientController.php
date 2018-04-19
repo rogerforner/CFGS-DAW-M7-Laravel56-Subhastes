@@ -18,7 +18,7 @@ class AuctionClientController extends Controller
     {
         $now = date("Y-m-d H:i:s");
 
-        $activeAuctions = Auction::where('date_end', '>=', $now)->get();
+        $activeAuctions = Auction::where('date_end', '>=', $now)->where('date_start','<=',$now)->get();
         foreach($activeAuctions as $activeAuction){
             $activeAuction->product = $activeAuction->getProduct($activeAuction->stock_id);
         }

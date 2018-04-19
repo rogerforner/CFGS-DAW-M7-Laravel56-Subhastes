@@ -10200,3 +10200,19 @@ footer.bigfoot #copyright-designer hr {
   }
 }
 
+.category-box {
+  padding: 12px 6px 12px 6px;
+  border: 1.5px solid rgba(97, 97, 97, 0.822);
+}
+
+.category-box a {
+  color: #616161;
+  font-weight: bold;
+}
+
+.category-box a:hover {
+  color: #353535;
+  font-weight: bold;
+  text-decoration: none;
+}
+
