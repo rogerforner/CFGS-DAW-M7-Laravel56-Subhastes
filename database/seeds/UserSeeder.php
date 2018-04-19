@@ -25,6 +25,7 @@ class UserSeeder extends Seeder
             'surname'  => 'adminSurname',
             'email'    => 'admin@example.com',
             'password' => bcrypt('123456'),
+            'verified' => true,
         ]);
 
         $modUser = User::create([
@@ -33,6 +34,7 @@ class UserSeeder extends Seeder
             'surname'  => 'ManagerSurname',
             'email'    => 'auctionManager@example.com',
             'password' => bcrypt('123456'),
+            'verified' => true,
         ]);
 
         $User = User::create([
@@ -41,6 +43,7 @@ class UserSeeder extends Seeder
             'surname'  => 'userSurname',
             'email'    => 'user@example.com',
             'password' => bcrypt('123456'),
+            'verified' => true,
         ]);
 
 
