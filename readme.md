@@ -97,6 +97,20 @@ En el nostre cas hem creat uns usuaris d'exemple, per tal de poder-los inserir a
 ```
 $ php artisan migrate:refresh --seed
 ```
+### Enviament de correus electrònics
+
+Per permetre l'enviament de correus electrònics, necessari per al registre d'usuaris/ies (verificació de email), és necessari disposar d'un compte [Mailtrap](https://mailtrap.io), [Mailgun](), [Gmail](), etc. i emplenar les dades del següent apartat del _.env_.
+
+```
+MAIL_DRIVER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
+```
+
+_Depenent del projecte, es poden emplenar la resta de paràmetres de configuració, inclòs crear-ne de nous._
 
 ## Assets
 
