@@ -62,8 +62,9 @@ Route::get('paypalerror', 'PaymentController@error')->name('paypalerror');
 /*
 # Socialite
 *****************************************************************************/
-Route::get('/auth/{provider}', 'Auth\AuthController@redirectToProvider');
-Route::get('/auth/{provider}/callback', 'Auth\AuthController@handleProviderCallback');
+Route::get('/auth/{provider}', 'Auth\AuthController@redirectToProvider')->name('socialite');
+Route::get('/auth/{provider}/callback', 'Auth\AuthController@handleProviderCallback')->name('socialite_callback');
+
 
 Route::resource('categories', 'CategoryClientController', ['only' => ['index', 'show']]);
 Route::get('/', 'AuctionClientController@index');

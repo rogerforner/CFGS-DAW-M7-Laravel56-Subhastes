@@ -73,8 +73,8 @@
                             </div>
                         </div>
                         <div class="mt-4 col-5 mx-auto align-items-center">
-                            <a href="/auth/github" class="btn btn-dark mx-auto font-weight-bold px-3">GitHub <i style="font-size: 1.5em;" class="fab fa-github"></i></a>
-                            <a href="/auth/google" class="btn btn-danger mx-auto font-weight-bold px-3">Google <i style="font-size: 1.5em;" class="fab fa-google-plus-g"></i></a>
+                            <a href="{{route('socialite',['provider' => 'github'])}}" class="btn btn-dark mx-auto font-weight-bold px-3">GitHub <i style="font-size: 1.5em;" class="fab fa-github"></i></a>
+                            <a href="{{route('socialite',['provider' => 'google'])}}" class="btn btn-danger mx-auto font-weight-bold px-3">Google <i style="font-size: 1.5em;" class="fab fa-google-plus-g"></i></a>
                         </div>
                     </form>
                 </div>
