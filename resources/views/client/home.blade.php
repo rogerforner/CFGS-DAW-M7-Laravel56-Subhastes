@@ -1,8 +1,4 @@
-@hasanyrole('admin|auctionManager')
-  @extends('layouts.admin')
-@else
-  @extends('layouts.client')
-@endhasanyrole
+@extends('layouts.client')
 @section('title', 'User profile panel')
 @section('description', 'You"r profile control panel')
 @section('content')

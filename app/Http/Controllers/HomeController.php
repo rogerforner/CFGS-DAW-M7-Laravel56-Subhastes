@@ -73,6 +73,6 @@ class HomeController extends Controller
         $paginator1 = (new LengthAwarePaginator(
             $array1->forPage($page, $perPage), $array1->count(), $perPage, $page)
         );
-        return view('client.home', ['win' => $paginator, 'user'=>$userInfo, 'win1' => $paginator1]);
+        return view('admin.index', ['win' => $paginator, 'user'=>$userInfo, 'win1' => $paginator1]);
     }
 }
