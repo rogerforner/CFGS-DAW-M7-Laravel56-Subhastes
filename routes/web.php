@@ -66,4 +66,4 @@ Route::get('/auth/{provider}', 'Auth\AuthController@redirectToProvider');
 Route::get('/auth/{provider}/callback', 'Auth\AuthController@handleProviderCallback');
 
 Route::resource('categories', 'CategoryClientController', ['only' => ['index', 'show']]);
-Route::get('/','AuctionClientController@index');
+Route::get('/', 'AuctionClientController@index');
