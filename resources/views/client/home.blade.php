@@ -84,7 +84,7 @@
                   <small>25€</small>
                 </div>
                 <div class="col-6">
-                  <input type="radio" name="amount" value="50">
+                  <input type="radio" name="amount" value="50" checked="checked">
                   <small>50€</small>
                 </div>
               </div>
