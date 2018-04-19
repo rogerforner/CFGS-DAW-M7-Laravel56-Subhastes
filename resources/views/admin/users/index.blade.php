@@ -32,7 +32,7 @@
           {{-- Taula d'usuaris --}}
           <div class="table-responsive">
             <table class="table table-hover mt-4">
-              <thead class="bg-cream text-white">
+              <thead class="thead-dark text-white">
                 <tr>
                   <th scope="col">ID</th>
                   <th scope="col">Nickname</th>

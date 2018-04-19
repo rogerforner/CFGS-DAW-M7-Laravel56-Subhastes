@@ -91,7 +91,14 @@ class AuctionAdminController extends Controller
      */
     public function show($id)
     {
-        //
+        $auction = Auction::where('id',$id)->get();
+        $auction[0]->product = $auction[0]->getProduct($auction[0]->stock_id);
+        if($auction[0]->getWinner($auction[0]->id) != NULL){
+            $auction[0]->winner_id = $auction[0]->getWinner($auction[0]->id);
+        }else{
+            $auction[0]->winner_id = NULL;
+        }
+        return view('admin.auctions.show')->with(['auction' => $auction[0]]);
     }
 
     /**

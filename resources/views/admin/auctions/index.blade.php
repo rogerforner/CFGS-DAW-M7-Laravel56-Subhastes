@@ -55,7 +55,7 @@
                       @if($auction->winner_id == NULL)
                         <i class="fa fa-times text-danger" data-toggle="tooltip" data-placement="top" title="There's no winner yet.."></i>
                       @else
-                        {{$auction->winner_id[0]->nickname}}
+                        {{$auction->winner_id->nickname}}
                       @endif
                     </td>
                     <td class="align-middle">

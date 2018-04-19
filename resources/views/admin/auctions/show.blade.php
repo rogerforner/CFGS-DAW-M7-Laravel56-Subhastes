@@ -7,30 +7,30 @@
     <div class="col">
       <div class="card shadow-2">
         <div class="card-body">
-          <h5 class="card-title">Product info</h5>
+          <h5 class="card-title">Auction info</h5>
           {{-- Dades --}}
           <dl class="row">
             <dt class="col-sm-2">Name</dt>
-            <dd class="col-sm-10">{{ $product->name }}</dd>
+            <dd class="col-sm-10">{{ $auction->title }}</dd>
 
             <dt class="col-sm-2">Description</dt>
-            <dd class="col-sm-10">{{ $product->description }}</dd>
+            <dd class="col-sm-10">{{ $auction->description }}</dd>
 
-            <dt class="col-sm-2">Characteristics</dt>
-            <dd class="col-sm-10">{{ $product->characteristics }}</dd>
+            <dt class="col-sm-2">Product</dt>
+            <dd class="col-sm-10">{{ $auction->product->name }}</dd>
 
-            <dt class="col-sm-2">Image</dt>
-            <dd class="col-sm-10">{{ $product->image }}</dd>
+            <dt class="col-sm-2">Winner</dt>
+            <dd class="col-sm-10">{{ $auction->winner_id->nickname }}</dd>
 
-            <dt class="col-sm-2">Created at</dt>
-            <dd class="col-sm-10">{{ $product->created_at }}</dd>
+            <dt class="col-sm-2">Start on</dt>
+            <dd class="col-sm-10">{{ $auction->date_start }}</dd>
 
-            <dt class="col-sm-2">Updated at</dt>
-            <dd class="col-sm-10">{{ $product->updated_at }}</dd>
+            <dt class="col-sm-2">Finish on</dt>
+            <dd class="col-sm-10">{{ $auction->date_end }}</dd>
           </dl>
           {{-- Tornar enrere --}}
           <p class="text-right">
-            <a href="{{ action('ProductController@index') }}" class="card-link">
+            <a href="{{ action('AuctionAdminController@index') }}" class="card-link">
               <i class="far fa-arrow-alt-circle-left"></i> Go back
             </a>
           </p>
