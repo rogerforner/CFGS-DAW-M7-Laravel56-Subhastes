@@ -28,6 +28,7 @@
                     <div class="card-body">
                       <h5 class="card-title">{{ $activeAuction->title }}</h5>
                       <p class="card-text">{{ $activeAuction->description }}</p>
+                      <a href="{{ action('AuctionClientController@show', ['id' => $activeAuction->id]) }}" class="btn btn-dark">See auction</a>
                     </div>
                     <div class="card-footer">
                       <small class="text-muted">Ending: {{ $activeAuction->date_end }}</small>
