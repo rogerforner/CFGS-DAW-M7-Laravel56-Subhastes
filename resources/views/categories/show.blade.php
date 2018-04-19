@@ -20,8 +20,7 @@
         <!-- Actives -->
         <div class="tab-pane fade active show" id="nav-actives" role="tabpanel" aria-labelledby="nav-actives-tab" aria-expanded="true">
           <div class="row px-3 mt-3">
-            <div class="col">
-              <div class="card-deck">
+            <div class="col-12 col-sm-4 col-md-4">
                 @forelse ($activeAuctions as $activeAuction)
                 @if($activeAuction->category != null)
                   <div class="card">
@@ -29,11 +28,13 @@
                     <div class="card-body">
                       <h5 class="card-title">{{ $activeAuction->title }}</h5>
                       <p class="card-text">{{ $activeAuction->description }}</p>
+                      @hasanyrole('admin|auctionManager|user')
+                      <a href="{{ action('AuctionClientController@show', ['id' => $activeAuction->id]) }}" class="btn btn-dark">See auction</a>
+                      @endhasanyrole
                     </div>
                     <div class="card-footer">
                       <small class="text-muted">Ending: {{ $activeAuction->date_end }}</small>
                     </div>
-                  </div>
                 @else
                 <p>There are no auctions yet.</p>
                 @endif
@@ -47,7 +48,7 @@
         <!-- Finalitzades -->
         <div class="tab-pane fade" id="nav-finalitzades" role="tabpanel" aria-labelledby="nav-finalitzades-tab" aria-expanded="false">
           <div class="row px-3 mt-3">
-            <div class="col">
+            <div class="col-12 col-sm-6 col-md-4">
               <div class="card-deck">
                 @forelse ($finishedAuctions as $finishedAuction)
                 @if($finishedAuction->category != null)

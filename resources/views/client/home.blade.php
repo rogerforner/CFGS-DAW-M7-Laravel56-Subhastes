@@ -1,10 +1,11 @@
-@extends('layouts.client')
+@hasanyrole('admin|auctionManager')
+  @extends('layouts.admin')
+@else
+  @extends('layouts.client')
+@endhasanyrole
 @section('title', 'User profile panel')
 @section('description', 'You"r profile control panel')
 @section('content')
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 {{-- Contingut aquí --}}
 <div class="row my-0 py-0" style="margin-left:0px !important;margin-right:0px !important;">
   <div class="col-md-3 card shadow-2" style="padding-left:0px !important;">
