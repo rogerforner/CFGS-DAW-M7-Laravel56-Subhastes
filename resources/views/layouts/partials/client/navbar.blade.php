@@ -10,8 +10,13 @@
   <div class="collapse navbar-collapse" id="navbarTogglerClient">
     {{-- Menú Esquerra --}}
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <!-- Enllaç a la pàgina d'inici -->
       <li class="nav-item">
-        <a class="nav-link" href="{{ url('/') }}">Auctions</a>
+        <a class="nav-link" href="{{ url('/') }}"><i class="fas fa-home"></i> Home</a>
+      </li>
+      <!-- Enllaç a la pàgina de les apostes categoritzades -->
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('/categories') }}"><i class="fas fa-tag"></i> Auctions per category</a>
       </li>
     </ul><!-- /navegació-esquerra -->
     {{-- Menú Dreta --}}
@@ -30,7 +35,9 @@
             @hasanyrole('admin|auctionManager')
               <a class="dropdown-item" href="{{action('HomeController@index')}}"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
             @endhasanyrole
+            @hasanyrole('user')
             <a class="dropdown-item" href="{{action('UserProfileController@index')}}"><i class="fas fa-user-secret"></i> Profile</a>
+            @endhasanyrole
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 <i class="fas fa-power-off"></i> {{ __('Logout') }}
