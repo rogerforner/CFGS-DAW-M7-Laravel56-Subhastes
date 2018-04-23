@@ -10,8 +10,13 @@
   <div class="collapse navbar-collapse" id="navbarTogglerClient">
     {{-- Menú Esquerra --}}
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <!-- Enllaç a la pàgina d'inici -->
       <li class="nav-item">
         <a class="nav-link" href="{{ url('/') }}"><i class="fas fa-home"></i> Home</a>
+      </li>
+      <!-- Enllaç a la pàgina de les apostes categoritzades -->
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('/categories') }}"><i class="fas fa-tag"></i> Auctions per category</a>
       </li>
     </ul><!-- /navegació-esquerra -->
     {{-- Menú Dreta --}}
