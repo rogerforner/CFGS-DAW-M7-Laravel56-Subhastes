@@ -9,7 +9,7 @@
     {{-- Menú Esquerra --}}
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item {{ Request::is('/') ? 'active' : '' }}">
-        <a class="nav-link" href="{{ url('/') }}">Home {!! Request::is('/') ? '<span class="sr-only">(current)</span>' : '' !!}</a>
+        <a class="nav-link" href="{{ url('/') }}"><i class="fas fa-home"></i> Home {!! Request::is('/') ? '<span class="sr-only">(current)</span>' : '' !!}</a>
       </li>
     </ul><!-- /navegació-esquerra -->
     {{-- Menú Dreta --}}

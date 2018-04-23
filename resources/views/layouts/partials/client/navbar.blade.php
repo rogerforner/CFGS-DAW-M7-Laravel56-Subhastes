@@ -11,7 +11,7 @@
     {{-- Menú Esquerra --}}
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item">
-        <a class="nav-link" href="{{ url('/') }}">Auctions</a>
+        <a class="nav-link" href="{{ url('/') }}"><i class="fas fa-home"></i> Home</a>
       </li>
     </ul><!-- /navegació-esquerra -->
     {{-- Menú Dreta --}}

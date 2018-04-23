@@ -8,6 +8,10 @@
   <div class="collapse navbar-collapse" id="navbarTogglerAdmin">
     {{-- Menú Esquerra --}}
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      {{-- Tornar a la pàgina d'inici --}}
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('/') }}"><i class="fas fa-home"></i> Home</a>
+      </li>
       {{-- Enllaç "Dropdown" (Usuaris) --}}
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUsers" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-users"></i> Users</a>
