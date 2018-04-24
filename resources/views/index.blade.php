@@ -20,8 +20,7 @@
         <!-- Actives -->
         <div class="tab-pane fade active show" id="nav-actives" role="tabpanel" aria-labelledby="nav-actives-tab" aria-expanded="true">
           <div class="row px-3 mt-3">
-            <div class="col-12 col-sm-6">
-              <div class="card-deck">
+            <div class="col-12 col-sm-3">
                 @forelse ($activeAuctions as $activeAuction)
                   <div class="card">
                     <img width="100%" class="card-img-top" src="{{ $activeAuction->product->image }}" alt="{{ $activeAuction->title }}">
@@ -39,15 +38,13 @@
                 @empty
                   <p>There are no auctions yet.</p>
                 @endforelse
-              </div><!-- /.card-deck -->
             </div><!-- /.col -->
           </div><!-- /.tab-pane -->
         </div>
         <!-- Finalitzades -->
         <div class="tab-pane fade" id="nav-finalitzades" role="tabpanel" aria-labelledby="nav-finalitzades-tab" aria-expanded="false">
           <div class="row px-3 mt-3">
-            <div class="col-12 col-sm-6">
-              <div class="card-deck">
+            <div class="col-12 col-sm-3">
                 @forelse ($finishedAuctions as $finishedAuction)
                   <div class="card">
                     <img width="100%" class="card-img-top" src="{{ $finishedAuction->getProduct($finishedAuction->stock_id)->image }}" alt="{{ $finishedAuction->title }}">
@@ -62,7 +59,6 @@
                 @empty
                   <p>There are no auctions yet.</p>
                 @endforelse
-              </div><!-- /.card-deck -->
             </div><!-- /.col -->
           </div><!-- /.tab-pane -->
         </div>
