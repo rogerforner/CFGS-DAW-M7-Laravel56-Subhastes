@@ -8,7 +8,17 @@
   <div class="collapse navbar-collapse" id="navbarTogglerAdmin">
     {{-- Menú Esquerra --}}
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <!-- Enllaç a la pàgina d'inici -->
       @role('admin|auctionManager')
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('/') }}"><i class="fas fa-home"></i> Home</a>
+      </li>
+      <!-- Enllaç a la pàgina de les apostes categoritzades -->
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('/categories') }}"><i class="fas fa-tag"></i> Auctions per category</a>
+      </li>
+      @endrole
+      @role('admin')
       {{-- Enllaç "Dropdown" (Usuaris) --}}
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUsers" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-users"></i> Users</a>
@@ -17,7 +27,8 @@
           <a class="dropdown-item" href="{{action('UserController@create')}}">Create user</a>
         </div>
       </li>
-
+      @endrole
+      @role('admin|auctionManager')
       {{-- Enllaç "Dropdown" (Subhastes) --}}
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAuctions" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-euro-sign"></i> Auctions</a>
@@ -26,7 +37,8 @@
           <a class="dropdown-item" href="{{action('AuctionAdminController@create')}}">Create auction</a>
         </div>
       </li>
-
+      @endrole
+      @role('admin')
       {{-- Enllaç "Dropdown" (Productes) --}}
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownProducts" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-cubes"></i> Products</a>
@@ -54,9 +66,16 @@
         </div>
       </li>
       @endrole
+      @role('user')
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('/') }}"><i class="fas fa-home"></i> Home</a>
+      </li>
+      <!-- Enllaç a la pàgina de les apostes categoritzades -->
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('/categories') }}"><i class="fas fa-tag"></i> Auctions per category</a>
+      </li>
+      @endrole
     </ul>
-
-
     {{-- Menú Dreta --}}
     <ul class="navbar-nav ml-auto">
       <!-- Authentication Links -->
@@ -64,14 +83,19 @@
         <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
         <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
       @else
+
+        <li class="nav-item"><a class="nav-link" href="#"><i class="far fa-money-bill-alt"></i><span class="badge"> {{Auth::user()->cash}}</span></a></li>
         <li class="nav-item dropdown">
           <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
               <i class="fas fa-user-circle"></i> {{ Auth::user()->name }} <span class="caret"></span>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            @hasanyrole('admin|auctionManager')
+            @role('admin|auctionManager')
               <a class="dropdown-item" href="{{action('HomeController@index')}}"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-            @endhasanyrole
+            @endrole
+            @role('user')
+            <a class="dropdown-item" href="{{action('UserProfileController@index')}}"><i class="fas fa-user-secret"></i> Profile</a>
+            @endrole
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 <i class="fas fa-power-off"></i> {{ __('Logout') }}
