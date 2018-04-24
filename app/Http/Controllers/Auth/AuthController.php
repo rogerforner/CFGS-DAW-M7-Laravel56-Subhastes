@@ -57,22 +57,26 @@ class AuthController extends Controller
         $provider = session()->get('provider');
         if($provider == 'google'){
             session()->forget('provider');
-            return User::create([
+            $user= User::create([
                 'nickname' => $githubUser->name,
                 'name' => $githubUser->user['name']['givenName'],
                 'surname' => $githubUser->user['name']['familyName'],
                 'email' => $githubUser->email,
                 'socialite_id' => $githubUser->id,
             ]);
+            $user->assignRole('user');
+            return $user;
         }elseif($provider == 'github'){
             session()->forget('provider');
-            return User::create([
+            $user= User::create([
                 'nickname' => $githubUser->nickname,
                 'name' => $githubUser->user['name'],
                 'surname' => $githubUser->user['name'],
                 'email' => $githubUser->email,
                 'socialite_id' => $githubUser->id,
             ]);
+            $user->assignRole('user');
+            return $user;
         }
     }
 }

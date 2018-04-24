@@ -8,6 +8,7 @@
   <div class="collapse navbar-collapse" id="navbarTogglerAdmin">
     {{-- Menú Esquerra --}}
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      @role('admin|auctionManager')
       {{-- Enllaç "Dropdown" (Usuaris) --}}
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUsers" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-users"></i> Users</a>
@@ -52,7 +53,10 @@
           <a class="dropdown-item" href="{{action('CategoryAdminController@create')}}">Create category</a>
         </div>
       </li>
+      @endrole
     </ul>
+
+
     {{-- Menú Dreta --}}
     <ul class="navbar-nav ml-auto">
       <!-- Authentication Links -->
